@@ -36,6 +36,11 @@ layout: default
         {% include recent-post.html %}
         {% include newsletter.html %}
         {% include comments.html %}
+        {% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}
       </div>
     </div> <!-- End Wrapper -->
   </article>
