@@ -4,7 +4,7 @@ description: 'I provide information related to information security.' # this mea
 permalink: ':title:output_ext'
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://Adawn0106.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-logo: "/assets/img/branding/235166176236131183-2024-09-24-084826.svg"
+logo: "/assets/img/branding/sb.svg"
 logo-icon: "/assets/img/branding/MVM-logo-full.png"
 logo-icon-SEO: "/assets/img/branding/MVM-logo-full.png" # must be a non SVG file
 
