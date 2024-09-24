@@ -26,8 +26,8 @@ Here is a table showing the global web browser market share, and as of December 
 
 The engine used by the Chrome browser, which I'm currently introducing, is the V8 engine.
 
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/0a823c86-6e55-41b4-a956-28a7ab7cd5b5" />
+<p style="text-align: center;">
+    <img src="https://github.com/user-attachments/assets/0a823c86-6e55-41b4-a956-28a7ab7cd5b5" alt="V8 engine" />
 </p>
 
 *Source: [Browser Market Share Worldwide](https://gs.statcounter.com/browser-market-share#monthly-202312-202312-bar)*
@@ -46,13 +46,13 @@ The components of V8 are as follows:
 - Maglev
 - TurboFan
 
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/88795d10-86c5-45f2-9bc8-0ad99580b759" />
+<p style="text-align: center;">
+    <img src="https://github.com/user-attachments/assets/88795d10-86c5-45f2-9bc8-0ad99580b759" alt="V8 Pipeline" />
 </p>
 *Source: [V8_pipeline](https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775)*
 
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/6aaf0bad-08c3-4520-966f-7f8f8f6ed823" />
+<p style="text-align: center;">
+    <img src="https://github.com/user-attachments/assets/6aaf0bad-08c3-4520-966f-7f8f8f6ed823" alt="Pipeline with Maglev" />
 </p>
 *Source: [Pipeline with Maglev](https://docs.google.com/document/d/13CwgSL4yawxuYg3iNlM-4ZPCB8RgJya6b8H_E2F-Aek/edit#heading=h.dmhxljs5hbh)*
 
@@ -64,12 +64,12 @@ I will briefly explain each component.
 
   [AST Explorer](https://astexplorer.net/)
 
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/1544592a-d3c2-45ff-ab6d-97d689cfa2a6" />
+<p style="text-align: center;">
+    <img src="https://github.com/user-attachments/assets/1544592a-d3c2-45ff-ab6d-97d689cfa2a6" alt="AST Example" />
 </p>
 
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/d4214fee-b9f1-4543-a9b5-bec505bf1d1d" />
+<p style="text-align: center;">
+    <img src="https://github.com/user-attachments/assets/d4214fee-b9f1-4543-a9b5-bec505bf1d1d" alt="AST Representation" />
 </p>
 
 - **Ignition**: As V8's interpreter, Ignition converts the parsed AST structure into bytecode.  
@@ -78,8 +78,8 @@ I will briefly explain each component.
 
   This image shows a portion of the bytecode:
 
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/e5b646c6-259a-40cd-bcc5-0e83f93f5841" />
+<p style="text-align: center;">
+    <img src="https://github.com/user-attachments/assets/e5b646c6-259a-40cd-bcc5-0e83f93f5841" alt="Bytecode Example" />
 </p>
 
 Based on the profiling information collected by Ignition, V8 determines the level of optimization needed using a JIT compiler. There are three types of compilers involved in this process:
@@ -118,8 +118,3 @@ Rather than storing direct addresses of objects, V8 stores indices of tables to 
 - [Data and Object in V8](https://www.dashlane.com/blog/how-is-data-stored-in-v8-js-engine-memory)
 - [Abstract of Maglev](https://research.google/pubs/maglev-a-fast-and-reliable-software-network-load-balancer/)
 - [Explanation about Garbage Collection in Korean](https://medium.com/hcleedev/web-javascript%EC%9D%98-garbage-collection-v8-%EC%97%94%EC%A7%84-9409c5be917c)
-
-
-
-
-
