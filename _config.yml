@@ -26,8 +26,7 @@ highlight_theme: syntax-base16.monokai.dark # select a dark theme for the code h
 # Author settings
 author: adawn0106 # add your name
 author-pic: remix-000a93ed-966b-4978-99b8-04959aeec1e9.png
-about-author: I am a student with a strong interest in information security. I plan to post about vulnerability analysis, wargames, and CTFs.
-If you have any questions, feel free to contact me via comments or LinkedIn.
+about-author: I am a student with a strong interest in information security. I plan to post about vulnerability analysis, wargames, and CTFs. If you have any questions, feel free to contact me via comments or LinkedIn.
 
 # Contact links
 email: adawn0106@gmail.com # Add your Email address
