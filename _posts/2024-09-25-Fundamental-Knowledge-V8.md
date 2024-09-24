@@ -4,7 +4,7 @@ read_time: true
 show_date: true
 title: "Fundamental Knowledge of V8 engine (V8, Pipeline, Garbage collection, Ubercage)"
 date: 2024-09-25
-img: posts/20240925/v8.png
+img: posts/20240925/v8_picture.png
 tags: [V8, prior knowledge, pipeline, Garbage collection, Ubercage]
 category: prior knowledge
 author: adawn0106
