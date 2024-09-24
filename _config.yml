@@ -20,7 +20,7 @@ logo-icon-SEO: "/assets/img/branding/c7b21329-a4be-4962-97d1-58e329545bfd.png" #
 # the browser is closed or not)
 night_mode: "auto"
 
-logo-dark: "/assets/img/branding/assets/c7b21329-a4be-4962-97d1-58e329545bfd.png"
+logo-dark: "/assets/img/branding/c7b21329-a4be-4962-97d1-58e329545bfd.png"
 highlight_theme: syntax-base16.monokai.dark # select a dark theme for the code highlighter if needed
 
 # Author settings
