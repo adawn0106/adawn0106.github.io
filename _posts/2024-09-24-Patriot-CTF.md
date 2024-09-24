@@ -20,4 +20,4 @@ The problems were not as hard as I expected, and I was able to challenge myself.
 There was a wider variety of problems than I thought, making it more enjoyable, and it turned out to be a great experience for someone like me who has just started studying. 
 Although I didn't make it into the top 100 this time, I will work harder and prepare better so I can rank within the top 100 next time.
 
-![patriot_cert](./assets/img/posts/20240924/pctf-cert.png
+![patriot_cert](./assets/img/posts/20240924/pctf-cert.png)
