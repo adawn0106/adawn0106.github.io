@@ -6,7 +6,7 @@ baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://Adawn0106.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/img/branding/sb.svg"
 logo-icon: "/assets/img/branding/sb.svg"
-logo-icon-SEO: "/assets/img/branding/sb.png" # must be a non SVG file
+logo-icon-SEO: "/assets/img/branding/c7b21329-a4be-4962-97d1-58e329545bfd.png" # must be a non SVG file
 
 # Night/Dark mode
 # Default mode is "auto", "auto" is for auto nightshift
