@@ -8,7 +8,7 @@ img: posts/20240924/patriot.png
 tags: [CTF]
 category: review
 author: adawn0106
-description: "A Short Review of Patriot CTF"
+description: "My Thoughts on the Patriot CTF"
 comments: true
 
 ---

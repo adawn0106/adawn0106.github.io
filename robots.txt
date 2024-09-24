@@ -1,4 +1,4 @@
-User-agent: *
-allow: /
 
-https://adawn0106.github.io/sitemap.xml
+User-agent: *
+Allow: /
+Sitemap: https://adawn0106.github.io/sitemap.xml
