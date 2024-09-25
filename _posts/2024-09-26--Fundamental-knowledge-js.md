@@ -5,7 +5,7 @@ show_date: true
 title: " Fundamental Knowledge of JavaScript (JS object structure, Allocation folding, TypedArray)"
 date: 2024-09-26
 img: posts/20240925/v8_picture.png
-tags: [V8, prior knowledge, JS object structure , Allocation Folding , TypedArray]
+tags: [ prior knowledge, JS object structure , Allocation Folding , TypedArray]
 category: prior knowledge
 author: adawn0106
 description: "Before explaining the V8 exploit, I would like to briefly introduce some prior knowledge you need to understand, including JS object structure , Allocation Folding , TypedArray."
