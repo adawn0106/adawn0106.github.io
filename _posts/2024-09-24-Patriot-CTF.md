@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "A Short Review of Patriot CTF"
+title: "A Short Review of 2024 Patriot CTF"
 date: 2024-09-24
 img: posts/20240924/patriot.png
 tags: [CTF]
