@@ -27,4 +27,4 @@ There’s still a long way to go, but the idea inspires me.
 Next time, I’d love to make some foreign friends to practice English conversation and maybe even discuss topics about different countries—it sounds like it would be fun and also improve my English skills. 
 Overall, it was a valuable experience.
 
-![PoC](https://github.com/Adawn0106/Adawn0106.github.io/blob/main/assets/img/posts/20241107/PoC2.png)
+![PoC](https://github.com/Adawn0106/Adawn0106.github.io/raw/main/assets/img/posts/20241107/PoC2.png)
