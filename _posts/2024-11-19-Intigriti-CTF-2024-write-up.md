@@ -28,8 +28,14 @@ The first category is the warmup. Since the scores were low, I thought I would s
 
 ![Sanity Check](https://github.com/Adawn0106/Adawn0106.github.io/raw/main/assets/img/posts/20241119/sanity1.png)
 
+
+
+
 This challenge was a simple one. Clicking the link redirected to the competition's Discord server.
 By checking the Discord channel, the flag could be found, making it an easy and straightforward challenge.
+
+
+
 
 ![Sanity Check](https://github.com/Adawn0106/Adawn0106.github.io/raw/main/assets/img/posts/20241119/sanity2.png)
 
