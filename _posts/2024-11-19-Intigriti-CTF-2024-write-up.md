@@ -25,7 +25,9 @@ The first category is the warmup. Since the scores were low, I thought I would s
 ## Warm Up
 <br>
 ### Sanity Check 
+
 <br>
+
 ![Sanity Check](https://github.com/Adawn0106/Adawn0106.github.io/raw/main/assets/img/posts/20241119/sanity1.png)
 
 <br>
