@@ -243,9 +243,6 @@ If you paint the background black in a program like Paint, the hidden flag becom
 
 ---
 
----
-
-
 ### IrrORversible
 
 <br>
