@@ -24,6 +24,7 @@ The first category is the warmup. Since the scores were low, I thought I would s
 
 ## Warm Up
 <br>
+
 ### Sanity Check 
 
 <br>
