@@ -22,7 +22,7 @@ I’d like to take some time to review the challenges I solved and the ones I at
 The first category is the warmup. Since the scores were low, I thought I would solve them easily, but they turned out to be not that straightforward.
 
 
-##Warm Up
+## Warm Up
 
 
 
