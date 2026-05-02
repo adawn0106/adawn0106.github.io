@@ -11,3 +11,6 @@
 /.vscode/
 /.idea/
 .liquidrc
+/_site/
+/.bundle/
+/vendor/
