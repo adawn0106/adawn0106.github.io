@@ -5,58 +5,54 @@ layout: default
 {% capture post_url %}{{ relativebase }}{{ page.url }}{% endcapture %}
 {% assign post_url = post_url | replace: "//", "/" %}
 
-<section class="hidden">
-  <div class="post">
-    <a class="post-list-title" href="{{ post_url }}">{{ page.title }}</a>
-    {% include post_meta.html type="post-card-meta" %}
-    <div class="post-excerpt">
-      {{ page.content | markdownify | strip_newlines | truncatewords: 100 }}
-      <a class="read-more" href="{{ post_url }}"> read more</a>
+<article class="blog-shell post-shell" itemscope itemtype="https://schema.org/CreativeWork">
+  {% include schema-meta.html %}
+
+  <header class="blog-header">
+    <a class="blog-brand" href="{{ '/' | relative_url }}">Adawn</a>
+    <nav class="blog-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/posts/' | relative_url }}">Posts</a>
+      <a href="https://github.com/Adawn0106">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="post-head">
+    <a class="back-link" href="{{ '/posts/' | relative_url }}">Posts</a>
+    <div class="post-preview-meta">
+      {% if page.date %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+      {% endif %}
+      {% if page.category %}
+      <span>{{ page.category }}</span>
+      {% endif %}
     </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+    <p>{{ page.description }}</p>
+    {% endif %}
+    {% if page.tags %}
+    <ul class="post-tags" aria-label="Tags">
+      {% for tag in page.tags %}
+      <li>{{ tag }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
-</section>
 
-<div class="flex-container transparent">
-  {% include header.html %}
-  
-  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    {% include schema-meta.html %}
-    <div class="page-image">
-      <div class="cover-image" style="background: url('{{ relativebase }}assets/img/{{ page.img }}') center no-repeat; background-size: cover;"></div>
-    </div>
-    
-    <div class="wrapper">
-      <div class="page-content">
-        <div class="header-page">
-          <h1 class="page-title">{{ page.title }}</h1>
-          {% include post_meta.html type="post-page-meta" %}
-        </div>
+  {% if page.img %}
+  <figure class="post-cover">
+    <img src="{{ relativebase }}assets/img/{{ page.img }}" alt="">
+  </figure>
+  {% endif %}
 
-        {% include sidebar.html context="post" class="side" id="sidebar" %}
-        {% if page.toc %}
-          {% include sidebar-toc.html %}
-        {% endif %}
-        {% include github-button.html %}
+  <div class="post-content">
+    {{ content }}
+  </div>
 
-        {{ page.content | markdownify }}
-
-        {% include sidebar.html context="post" class="inline" id="post-end" %}
-        <div class="separator"></div>
-        {% include author-box.html %}
-        {% include recent-post.html %}
-        {% include newsletter.html %}
-       <!--{% include comments.html %} -->
-
-        {% if page.comments %}
-          <div id="post-disqus" class="container">
-            {% include disqus.html %}
-          </div>
-        {% endif %}
-      </div>
-    </div> <!-- End Wrapper -->
-  </article>
-
-  {% include search.html %}
-  {% include footer.html %}
-</div>
-
+  {% if page.comments %}
+  <div class="post-comments">
+    {% include comments.html %}
+  </div>
+  {% endif %}
+</article>
