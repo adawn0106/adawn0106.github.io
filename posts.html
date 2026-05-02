@@ -1,0 +1,60 @@
+---
+layout: default
+title: Posts
+permalink: /posts/
+blog_skin: true
+---
+{% include calculate_relative_base.html %}
+
+<div class="blog-shell">
+  <header class="blog-header">
+    <a class="blog-brand" href="{{ '/' | relative_url }}">Adawn</a>
+    <nav class="blog-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/posts/' | relative_url }}" aria-current="page">Posts</a>
+      <a href="https://github.com/Adawn0106">GitHub</a>
+    </nav>
+  </header>
+
+  <section class="blog-hero">
+    <p class="blog-eyebrow">Security Blog</p>
+    <h1>Security research and exploit analysis.</h1>
+    <p>Notes on vulnerabilities, root cause analysis, proof-of-concepts, and exploitation.</p>
+  </section>
+
+  <section class="post-grid" aria-label="Posts">
+    {% for post in site.posts %}
+    {% include remove_double_slash.html %}
+    <article class="post-preview">
+      <a class="post-preview-image" href="{{ post_url }}" aria-label="{{ post.title }}">
+        {% if post.img %}
+        <img src="{{ relativebase }}assets/img/{{ post.img }}" alt="">
+        {% endif %}
+      </a>
+      <div class="post-preview-body">
+        <div class="post-preview-meta">
+          {% if post.date %}
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+          {% endif %}
+          {% if post.category %}
+          <span>{{ post.category }}</span>
+          {% endif %}
+        </div>
+        <h2><a href="{{ post_url }}">{{ post.title }}</a></h2>
+        {% if post.description %}
+        <p>{{ post.description }}</p>
+        {% else %}
+        <p>{{ post.content | strip_html | strip_newlines | truncatewords: 28 }}</p>
+        {% endif %}
+        {% if post.tags %}
+        <ul class="post-tags" aria-label="Tags">
+          {% for tag in post.tags limit: 4 %}
+          <li>{{ tag }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</div>
