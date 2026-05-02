@@ -1,29 +1,41 @@
 ---
-layout: menu-page
+layout: default
 title: Archive
 permalink: archive:output_ext
-infinite: yes
+blog_skin: true
 ---
 {% include calculate_relative_base.html %}
 
-<div class="archive tag-master">
-	<form class="search-form inline">
-		<div id="search-container">
-			<input type="text" id="search-input" class="search" placeholder="Search">
-		</div>
-	</form>
-	<ul id="results-container" class="results-search"></ul>
-	<div class="post-list">
-	{% for post in site.posts limit: 3 %}
-		<div class="post">
-			{% include remove_double_slash.html %}
-			<a class="post-list-title" href="{{ post_url }}">{{ post.title }}</a>
-			{% include post_meta.html type="post-card-meta" %}
-			<div class="post-excerpt">
-				{{ post.content | markdownify | strip_newlines | truncatewords: 100 }}<a class="read-more" href="{{ post_url }}"> read more</a>
-			</div>
-		</div>
-	{% endfor %}
-	</div>
+<div class="blog-shell taxonomy-shell">
+  <header class="blog-header">
+    <a class="blog-brand" href="{{ '/' | relative_url }}">Adawn</a>
+    <nav class="blog-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/posts/' | relative_url }}">Posts</a>
+      <a href="{{ '/tags.html' | relative_url }}">Tags</a>
+      <a href="{{ '/archive.html' | relative_url }}" aria-current="page">Archive</a>
+    </nav>
+  </header>
+
+  <section class="taxonomy-hero">
+    <p class="blog-eyebrow">Archive</p>
+    <h1>All posts in one place.</h1>
+  </section>
+
+  <section class="compact-post-list archive-list" aria-label="Archive">
+    {% for post in site.posts %}
+    {% include remove_double_slash.html %}
+    <article class="compact-post">
+      <a href="{{ post_url }}">{{ post.title }}</a>
+      <div class="post-preview-meta">
+        {% if post.date %}
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        {% endif %}
+        {% if post.category %}
+        <span>{{ post.category }}</span>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
 </div>
-{% include spinner.html %}
