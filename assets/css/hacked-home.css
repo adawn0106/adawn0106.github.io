@@ -1,0 +1,139 @@
+:root {
+  --bg: #080d0b;
+  --panel: #0d1512;
+  --panel-border: #1d3a2e;
+  --toolbar: #111d18;
+  --punct: #5ee787;
+  --key: #7ee787;
+  --value: #d2f8d2;
+  --muted: #63856f;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    linear-gradient(rgba(94, 231, 135, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 231, 135, 0.035) 1px, transparent 1px),
+    var(--bg);
+  background-size: 28px 28px;
+  color: var(--value);
+  font-family: Hack, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+a {
+  color: inherit;
+}
+
+.json-shell {
+  width: min(980px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.json-window {
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: rgba(13, 21, 18, 0.94);
+  box-shadow: 0 24px 80px var(--shadow);
+}
+
+.json-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 42px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--panel-border);
+  background: var(--toolbar);
+}
+
+.json-toolbar span {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+.json-toolbar span:nth-child(1) {
+  background: #ff6b6b;
+}
+
+.json-toolbar span:nth-child(2) {
+  background: #ffd166;
+}
+
+.json-toolbar span:nth-child(3) {
+  background: #5ee787;
+}
+
+.json-content {
+  margin: 0;
+  padding: clamp(22px, 5vw, 56px);
+  overflow-x: auto;
+  color: var(--value);
+  font-size: clamp(15px, 2.2vw, 24px);
+  line-height: 1.75;
+  white-space: pre;
+}
+
+.punct {
+  color: var(--punct);
+}
+
+.key {
+  color: var(--key);
+}
+
+.value {
+  color: var(--value);
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(94, 231, 135, 0.45);
+}
+
+.link:hover,
+.link:focus {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.cursor {
+  display: inline-block;
+  color: var(--punct);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .json-shell {
+    width: min(100% - 20px, 980px);
+    padding: 24px 0;
+  }
+
+  .json-content {
+    padding: 18px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+}
