@@ -1,25 +1,40 @@
 ---
-layout: home-page
 ---
-{% include calculate_relative_base.html %}
-
-<ol class="post-card-box clearfix">
-  {% for post in paginator.posts %}
-  {% include remove_double_slash.html %}
-  <li>
-    <div class="post-card">
-      <a href="{{ post_url }}" title="{{ post.title }}" class="post-card-image" style="background: url('{{ relativebase }}assets/img/{{ post.img }}') center no-repeat; background-size: cover;">
-      </a>
-      <div class="post-card-body">
-        <p class="post-card-title-and-meta">
-          
-          <a href="{{ post_url }}" class="post-card-link">
-          {{ post.title }}
-          </a>
-          {% include post_meta.html type="post-card-meta" date="none" %}
-        </p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="canonical" href="{{ site.url }}/">
+  <link rel="stylesheet" href="{{ '/assets/css/hacked-home.css' | relative_url }}">
+</head>
+<body>
+  <main class="json-shell" aria-label="Adawn0106 profile">
+    <div class="json-window">
+      <div class="json-toolbar" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+
+      <pre class="json-content"><span class="punct">{</span>
+  <span class="key">"name"</span><span class="punct">:</span> <span class="value">"do young park / adawn"</span><span class="punct">,</span>
+  <span class="key">"role"</span><span class="punct">:</span> <span class="value">"security researcher"</span><span class="punct">,</span>
+  <span class="key">"focus"</span><span class="punct">:</span> <span class="punct">[</span>
+    <span class="value">"vulnerability analysis"</span><span class="punct">,</span>
+    <span class="value">"browser internals"</span><span class="punct">,</span>
+    <span class="value">"browser exploitation"</span>
+  <span class="punct">]</span><span class="punct">,</span>
+  <span class="key">"links"</span><span class="punct">:</span> <span class="punct">{</span>
+    <span class="key">"posts"</span><span class="punct">:</span> <a class="value link" href="{{ '/posts/' | relative_url }}">"{{ site.url }}/posts/"</a><span class="punct">,</span>
+    <span class="key">"github"</span><span class="punct">:</span> <a class="value link" href="https://github.com/Adawn0106">"github.com/Adawn0106"</a><span class="punct">,</span>
+    <span class="key">"linkedin"</span><span class="punct">:</span> <a class="value link" href="https://www.linkedin.com/in/{{ site.linkedin }}">"linkedin.com/in/{{ site.linkedin }}"</a><span class="punct">,</span>
+    <span class="key">"tistory"</span><span class="punct">:</span> <a class="value link" href="https://adawn0106.tistory.com/">"adawn0106.tistory.com"</a>
+  <span class="punct">}</span>
+<span class="punct">}</span><span class="cursor">_</span></pre>
     </div>
-  </li>
-  {% endfor %}
-</ol>
+  </main>
+</body>
+</html>
