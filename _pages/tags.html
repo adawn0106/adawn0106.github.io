@@ -1,28 +1,57 @@
 ---
-layout: menu-page
+layout: default
 title: Tags
 permalink: tags:output_ext
+blog_skin: true
 ---
 {% include calculate_relative_base.html %}
 {% include get-site-tags.html %}
-<section class="blog-tags">
-  <h2>tags</h2>
-  {% include tag_cloud.html %}
-  <div class="tags-page-content">
-  {% for item in (0..site.tags.size) %}{% unless forloop.last %}
+
+<div class="blog-shell taxonomy-shell">
+  <header class="blog-header">
+    <a class="blog-brand" href="{{ '/' | relative_url }}">Adawn</a>
+    <nav class="blog-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/posts/' | relative_url }}">Posts</a>
+      <a href="{{ '/tags.html' | relative_url }}" aria-current="page">Tags</a>
+      <a href="{{ '/archive.html' | relative_url }}">Archive</a>
+    </nav>
+  </header>
+
+  <section class="taxonomy-hero">
+    <p class="blog-eyebrow">Tags</p>
+    <h1>Browse posts by topic.</h1>
+  </section>
+
+  <section class="tag-index" aria-label="Tag index">
+    {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-    <div class="list-group">
-      <div class="list-group-title"><a id="{{ this_word | cgi_escape }}">{{ this_word }}</a></div>
-      <div>
-      {% for post in site.tags[this_word] %}{% if post.title != null %}
-      {% include remove_double_slash.html %}
-        <div class="list-item">
+    <a href="#{{ this_word | cgi_escape }}">{{ this_word }} <span>{{ site.tags[this_word].size }}</span></a>
+    {% endunless %}{% endfor %}
+  </section>
+
+  <section class="taxonomy-list" aria-label="Posts by tag">
+    {% for item in (0..site.tags.size) %}{% unless forloop.last %}
+    {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
+    <div class="taxonomy-group">
+      <h2 id="{{ this_word | cgi_escape }}">{{ this_word }}</h2>
+      <div class="compact-post-list">
+        {% for post in site.tags[this_word] %}{% if post.title != null %}
+        {% include remove_double_slash.html %}
+        <article class="compact-post">
           <a href="{{ post_url }}">{{ post.title }}</a>
-          {% include post_meta.html type="post-card-meta" %}
-        </div>
-      {% endif %}{% endfor %}
-       </div>
+          <div class="post-preview-meta">
+            {% if post.date %}
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            {% endif %}
+            {% if post.category %}
+            <span>{{ post.category }}</span>
+            {% endif %}
+          </div>
+        </article>
+        {% endif %}{% endfor %}
+      </div>
     </div>
-  {% endunless %}{% endfor %}
-  </div>
-</section>
+    {% endunless %}{% endfor %}
+  </section>
+</div>
