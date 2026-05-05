@@ -18,7 +18,7 @@ I’d like to focus mainly on V8, but I might occasionally post some random or l
 
 Anyway, this time I’ll be covering the sandbox. I’ve been meaning to study it for a while, so I decided to revisit some documentation I already knew and go through it more carefully.  <br>
 This post is based on the following document:
-https://docs.google.com/document/d/10ZVrH2m_cbsjhZmjnWd4K5jpEHWCLourq2dulwN8elI/edit?tab=t.0 <br>
+[V8 Sandbox Glossary](https://docs.google.com/document/d/10ZVrH2m_cbsjhZmjnWd4K5jpEHWCLourq2dulwN8elI/edit?tab=t.0) <br>
 
 <br><br><br>
 
