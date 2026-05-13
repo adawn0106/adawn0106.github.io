@@ -14,7 +14,7 @@ comments: true
 ---
 
 This post is based on the following document: <br>
-[High-Level Design Doc]https://docs.google.com/document/d/1FM4fQmIhEqPG8uGp5o9A-mnPB5BOeScZYpkHjo0KKA8/edit?tab=t.0 <br>
+[High-Level Design Doc](https://docs.google.com/document/d/1FM4fQmIhEqPG8uGp5o9A-mnPB5BOeScZYpkHjo0KKA8/edit?tab=t.0) <br>
 
 <br><br><br>
 
