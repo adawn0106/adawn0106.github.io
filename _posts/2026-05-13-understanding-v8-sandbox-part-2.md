@@ -274,4 +274,68 @@ Finally, the reason raw pointers must not exist is, as discussed repeatedly abov
 
 <br>
 
-`The rest of the content will be added later.`
+## Objective
+
+Build an in-process sandbox for V8 to prevent an attacker who successfully exploited a V8 vulnerability, and thus is able to corrupt objects inside the V8 heap, from corrupting other memory in the process and thus from executing arbitrary code. In essence, this will turn arbitrary writes originating from V8 vulnerabilities into bounded writes.  <br> 
+Preventing reads (direct or speculative) outside of the V8 heap is not a goal, however. The performance overhead should be minimal, with a rough target of around 1% overall on real-world workloads. This sandbox should eventually become a supported security boundary. <br> 
+
+Although this follows the same reasoning discussed earlier, the V8 Sandbox considers AAW (Arbitrary Address Write) significantly more critical than AAR (Arbitrary Address Read). <br> 
+
+While information disclosure alone can still enable attackers to perform actions such as address leaks, ASLR bypasses, and object layout discovery, it does not immediately lead to control flow hijacking. Once arbitrary write becomes possible, however, attackers may corrupt memory outside the sandbox and eventually achieve arbitrary code execution. <br> 
+
+For example, with only AAR, attackers may leak addresses or inspect memory layouts, but they generally cannot perform attacks such as RIP overwrite, vtable overwrite, JIT code corruption, or function pointer overwrite. <br> 
+
+Therefore, the primary goal of the sandbox is to prevent writes to memory outside the sandbox, effectively transforming arbitrary writes into bounded writes. <br>  
+
+## Motivation
+
+Many V8 vulnerabilities exploited by real-world attackers are effectively 2nd order vulnerabilities: the root-cause is often a logic issue in one of the JIT compilers, which can then be exploited to generate vulnerable machine code (e.g. code that is missing a runtime safety check). <br> 
+The generated code can then in turn be exploited to cause memory corruption at runtime. This appears to be a somewhat natural problem of JIT compilers for dynamic languages, as one of their major purposes is to remove (redundant) runtime checks that would otherwise be performed by the interpreter. <br> 
+As an example, consider the case of a [JIT compiler incorrect side effect modeling vulnerability](http://phrack.org/issues/70/9.html#article) : here, the compiler will model the side effects of an operation incorrectly and can then be tricked into emitting machine code that is lacking a runtime type check after such an operation (because the compiler believes that the object could not have changed its type during the operation).<br>
+As such, the emitted machine code is now vulnerable to a type confusion, and the attacker can exploit that to cause (fairly arbitrary) memory corruption at runtime. These types of issues are uniquely attractive for attackers for a number of reasons: The attacker has a great amount of control over the memory corruption primitive and can often turn these bugs into highly reliable and fast exploits Memory safe languages will not protect from these issues as they are fundamentally logic bugs Due to CPU side-channels and the potency of V8 vulnerabilities, upcoming hardware security features such as memory tagging will likely be bypassable most of the time Due to the nature of these vulnerabilities, and their uniqueness to JavaScript engines, it seems desirable to build a custom sandboxing mechanism for V8. <br>
+
+Originally, I thought that during JIT compilation, runtime checks or guards were simply used temporarily or tested during execution. But now I understand that the generated machine code itself actually contains those runtime check instructions.
+<br>
+
+In other words, a JIT compiler generates machine code that already includes safety checks. However, because the JIT itself is expensive and performance-sensitive, if there is a part where it assumes something like:
+<br>
+“This condition will probably always be true.”
+<br>
+then it may optimize the code by removing some checks.
+<br>
+Usually, the generated machine code follows a pattern like:
+<br>
+`fast path + runtime guard`
+<br>
+So if a bug exists in the JIT compiler, it may fail to generate checks that were originally supposed to be there.
+
+“Incorrect side effect modeling” refers to how the compiler reasons about and models what kinds of state changes (side effects) can occur when a particular operation executes.
+
+For example, it concerns questions like:
+
+“How can operation A modify memory, objects, or type state?”
+
+To think about it more intuitively, in order to optimize code, a JIT compiler may assume that when accessing:
+
+`obj.x`
+
+the object `obj` will continue to have the same type.
+
+However, in the middle of execution, a function call such as:
+
+`foo(obj)`
+
+might actually trigger object structure changes, map transitions, prototype modifications, type changes, and so on. These are considered side effects.
+
+If the compiler models `foo(obj)` as something that does not change the type of `obj`, but in reality the type does change, then that becomes incorrect side effect modeling.
+
+As a result, the JIT may conclude that additional type checks are unnecessary and eliminate them, because it assumes the type of `obj` cannot change.
+
+Ultimately, this can lead to a wrong-type object being accessed in an invalid way, which is essentially how type confusion occurs.
+
+A side channel refers to a path that was not intended as the official data flow.
+
+For example, in a normal program, the intended channel may only reveal whether a password is correct or not. But if an attacker can infer the password by observing execution time, cache states, power consumption, branch predictor state, and so on, then that becomes a side-channel attack.
+
+Last updated - 2026/05/26
+Further updates will follow.
