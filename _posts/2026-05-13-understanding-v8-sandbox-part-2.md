@@ -373,8 +373,8 @@ For example, in a normal program, the intended channel may only reveal whether a
 
 ## Attack model
 
+This proposal assumes that an attacker is capable of repeatedly performing arbitrary reads and writes inside the V8 heap as well as potentially performing reads outside of the V8 heap, for example due to speculative side-channel attacks.
 
-This proposal assumes that an attacker is capable of repeatedly performing arbitrary reads and writes inside the V8 heap as well as potentially performing reads outside of the V8 heap, for example due to speculative side-channel attacks. 
 This reflects common initial exploitation primitives gained from many V8 vulnerabilities, such as vulnerabilities in the JIT compilers, the runtime, or the garbage collector.
 
 The ability to corrupt memory outside of the V8 heap is then considered to be an escape from this sandbox. This definition also covers arbitrary code execution.
@@ -385,11 +385,9 @@ The sandbox assumes that an attacker is already capable of performing arbitrary 
 
 This definition also includes arbitrary code execution.
 
-
 ## Design
 
 Since early 2020, V8 has implemented pointer compression in its heaps. With pointer compression, every reference from an object in the V8 heap to another object in the V8 heap (“on-heap”) becomes a 32 bit offset from the base of the heap, leaving only a few objects with raw pointers to objects outside the v8 heap (“off-heap”). Compressed pointers are then only valid inside a 4GB virtual memory region, referred to as the pointer compression cage. Pointer compression can be visualized with an instance of an ArrayBuffer in memory. The following shows the in-memory layout of a hypothetical ArrayBuffer object without pointer compression:
-
 
 ![sandbox](/assets/img/posts/20260527/sandbox-2_1.png)
 
@@ -399,9 +397,6 @@ In the case of a 64-bit on-heap pointer, it points to an object located inside t
 
 On the other hand, a 64-bit off-heap pointer points to native memory located outside the V8 heap.
 
-
-
-
 With pointer compression enabled, the same ArrayBuffer object would be stored as shown next:
 
 ![sandbox](/assets/img/posts/20260527/sandbox-2_2.png)
@@ -410,14 +405,13 @@ Here, all on-heap pointers were converted to 32-bit compressed pointers. In this
 
 The majority of V8 vulnerabilities can be exploited to corrupt memory (only) in the V8 heap (out-of-bounds accesses, type confusions, et al). With pointer compression enabled, an attacker with the ability to corrupt data in the V8 heap gains no additional capabilities by corrupting a compressed pointer. Instead, to reach outside the V8 heap, the attacker targets one of the remaining raw pointers in the heap (typically an ArrayBuffer or TypedArray backing store pointer). The fundamental idea behind this project is to protect (“sandboxify”) all remaining raw pointers in a way that prevents their abuse by an attacker. On a high level, this is achieved in the following way:
 
-A large (for example 1TB) region of virtual address space - the sandbox - is reserved during initialization of V8. This region contains the pointer compression cage, and so all V8 heaps, as well as ArrayBuffer backing stores and similar objects. 
+A large (for example 1TB) region of virtual address space - the sandbox - is reserved during initialization of V8. This region contains the pointer compression cage, and so all V8 heaps, as well as ArrayBuffer backing stores and similar objects.
 All objects inside the sandbox, but outside of V8 heaps, are addressed using fixed-size offsets (e.g. 40-bit offsets in the case of a 1TB sandbox) instead of raw pointers.
 All remaining off-heap objects must be referenced through a pointer table, which contains the pointer to the object together with type information to prevent type confusion attacks. Entries in this table are then referenced from objects in the v8 heap through indices.
 
 Compared to the past, the memory layout used to look like this:
 
 ```
-
 [V8 Heap]
   JSObject
   Array
@@ -429,7 +423,6 @@ Compared to the past, the memory layout used to look like this:
   Wasm memory
   native objects
   C++ structures
-
 ```
 
 Only the V8 heap was GC-managed, while the native memory regions actually useful for exploitation existed outside the heap. As a result, attackers could use type confusion bugs to corrupt backing store pointers and ultimately achieve arbitrary native memory access.
@@ -437,7 +430,6 @@ Only the V8 heap was GC-managed, while the native memory regions actually useful
 However, the architecture has now changed into something more like this:
 
 ```
-
 [Huge Sandbox Region]
  ├── V8 heap
  ├── pointer compression cage
@@ -445,7 +437,6 @@ However, the architecture has now changed into something more like this:
  ├── Wasm memory
  ├── various sandboxed native allocations
  └── other engine-managed memory
-
 ```
 
 Most memory regions directly managed by the JS engine are now placed inside one huge sandboxed virtual address range.
@@ -476,14 +467,11 @@ With this, the ArrayBuffer object from above would become:
 
 ![sandbox](/assets/img/posts/20260527/sandbox-2_3.png)
 
-
 ArrayBufferExtension is an auxiliary native-side (C++) structure internally associated with the ArrayBuffer object in V8. More precisely, it is not a JS heap object itself, but rather metadata used to manage external (native) state related to an ArrayBuffer.
 
 The older design looked roughly like this:
 
-
 ```
-
 JSArrayBuffer (heap object)
  ├── backing_store pointer  ---> raw native memory
  ├── byte_length
@@ -494,20 +482,17 @@ JSArrayBuffer (heap object)
                                  ├── embedder fields
                                  ├── linked list nodes
                                  └── allocator metadata
-
 ```
 
 The primary purposes of ArrayBufferExtension include:
 
 ```
-
 backing store lifetime management
 connecting GC with external memory accounting
 embedder/native-side bookkeeping
 ArrayBuffer tracking
 detach state management
 cleanup callback management
-
 ```
 
 In particular, because the ArrayBuffer backing store resides outside the GC heap (in native memory), the V8 garbage collector could not directly manage it through ordinary mark-and-sweep mechanisms alone.
@@ -521,34 +506,11 @@ which isolate the memory belongs to
 Previously, this structure existed as a native object outside the V8 heap, which also made it a potential exploitation target. However, with the introduction of the V8 sandbox, it is now located inside the sandbox region, adding an additional step for attackers.
 
 Here, the raw, off-heap backing storage pointer (purple) has been replaced with a 40-bit offset from the base of the sandbox (the offset is 0x45c00, shifted to the left by 24 to guarantee that the top bits are zero). On the other hand, the raw pointer to the ArrayBufferExtension object (orange) has been replaced with a 32-bit index into a pointer table. In this example, the size (magenta) remains unchanged, but would be verified on access to be smaller than the maximum allowed size of an ArrayBuffer. Alternatively, it could also be stored shifted to the left as well.
-Attackers are now assumed to be able to corrupt memory inside the sandbox arbitrarily and from multiple threads, and will now require an additional vulnerability to corrupt memory outside of it, and thus to execute arbitrary code. However, the attack surface of the sandbox will likely be significantly less complex than V8 itself due to the relatively low complexity of the embedder <-> V8 interface, and bugs in the sandbox appear to mostly be  “classic” memory corruption bugs as opposed to bugs in V8. For these reasons, the sandbox is assumed to be an easier-to-defend security boundary than the V8 VM.
+
+Attackers are now assumed to be able to corrupt memory inside the sandbox arbitrarily and from multiple threads, and will now require an additional vulnerability to corrupt memory outside of it, and thus to execute arbitrary code. However, the attack surface of the sandbox will likely be significantly less complex than V8 itself due to the relatively low complexity of the embedder <-> V8 interface, and bugs in the sandbox appear to mostly be “classic” memory corruption bugs as opposed to bugs in V8. For these reasons, the sandbox is assumed to be an easier-to-defend security boundary than the V8 VM.
 
 Finally, it is worth noting that, although not an explicit goal, this design also prevents an attacker from directly (but not speculatively) reading, not just writing, data outside of the sandbox.
 
 The remainder of this section discusses the central sandboxing mechanisms in some more detail, then concludes with a brief summary of the design.
 
 last update : 2026/05/27
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
