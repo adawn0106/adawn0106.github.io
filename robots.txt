@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 Disallow: /assets/
-Sitemap: https://adawn0106.github.io/sitemap.xml
+Sitemap: https://adawn.co.kr/sitemap.xml
