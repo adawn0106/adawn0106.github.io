@@ -17,16 +17,16 @@ This post is based on the following document: <br>
 
 <br><br>
 
-## Summeary
+## Summary
 
-Objective: build a low-overhead, in-process sandbox for V8. <br>
-Motivation: V8 bugs typically allow for the construction of unusually powerful and reliable exploits. <br>
-Furthermore, these bugs are unlikely to be mitigated by memory safe languages or upcoming hardware-assisted security features such as MTE or CFI. <br>
-As a result, V8 is especially attractive for real-world attackers. <br>
-Design: The proposal assumes that an attacker can arbitrarily corrupt memory on the V8 heap, where JavaScript objects are located. <br>
-This primitive can be constructed from typical V8 vulnerabilities. <br>
-To protect other memory within the same process from corruption, and by extension to prevent the execution of arbitrary code, the V8 heap is moved into a pre-reserved region of virtual address space: the sandbox. <br>
-Then, all memory accesses performed by V8 must either be restricted to the sandbox address space (e.g. by using offsets instead of raw pointers to reference objects) or be validated in some way (e.g. by using a pointer table indirection). <br>
+- Objective: build a low-overhead, in-process sandbox for V8.
+- Motivation: V8 bugs typically allow for the construction of unusually powerful and reliable exploits.
+- Furthermore, these bugs are unlikely to be mitigated by memory safe languages or upcoming hardware-assisted security features such as MTE or CFI.
+- As a result, V8 is especially attractive for real-world attackers.
+- Design: The proposal assumes that an attacker can arbitrarily corrupt memory on the V8 heap, where JavaScript objects are located.
+- This primitive can be constructed from typical V8 vulnerabilities.
+- To protect other memory within the same process from corruption, and by extension to prevent the execution of arbitrary code, the V8 heap is moved into a pre-reserved region of virtual address space: the sandbox.
+- Then, all memory accesses performed by V8 must either be restricted to the sandbox address space (e.g. by using offsets instead of raw pointers to reference objects) or be validated in some way (e.g. by using a pointer table indirection).
 
 In particular, full 64-bit pointers must be banned entirely from the V8 heap. <br>
 
@@ -61,11 +61,11 @@ For example, suppose the following code executes:
 char* p = malloc(32);
 ```
 
-The allocator would then:<br>
+The allocator would then:
 
-Allocate the memory region<br>
-Set the tag of the memory granules to tag = 5<br>
-Record tag = 5 in the upper bits of the returned pointer<br>
+- Allocate the memory region.
+- Set the tag of the memory granules to tag = 5.
+- Record tag = 5 in the upper bits of the returned pointer.
 
 Later, when the memory is accessed, the CPU checks whether the tag values match, i.e., whether `5==5`.
 
@@ -110,9 +110,8 @@ Memory tags, on the other hand, are stored in hidden metadata associated with me
 
 There are also situations where MTE is not sufficient.
 
-Case 1 is simple: if an OOB access occurs but the out-of-bounds region happens to have the same tag value, the access will still succeed because the tags match.
-
-Case 2 is the sub-granule overflow issue mentioned earlier.
+- Case 1 is simple: if an OOB access occurs but the out-of-bounds region happens to have the same tag value, the access will still succeed because the tags match.
+- Case 2 is the sub-granule overflow issue mentioned earlier.
 
 Since MTE assigns tags in 16-byte granules, anything occurring within the same granule shares the same tag. As a result, overflows occurring inside a single granule cannot be detected.
 
@@ -211,9 +210,9 @@ First is Forward-edge CFI.
 
 This protects:
 
-virtual calls
-function pointers
-indirect jumps
+- virtual calls
+- function pointers
+- indirect jumps
 
 and similar control flow transfers.
 
@@ -232,8 +231,8 @@ Next is Backward-edge CFI, which protects control flow returning backward.
 
 Examples include:
 
-function returns
-return addresses stored on the stack
+- function returns
+- return addresses stored on the stack
 
 One common mechanism is the shadow stack.
 
@@ -309,13 +308,10 @@ As such, the emitted machine code is now vulnerable to a type confusion, and the
 
 These types of issues are uniquely attractive for attackers for a number of reasons:
 
-The attacker has a great amount of control over the memory corruption primitive and can often turn these bugs into highly reliable and fast exploits
-
-Memory safe languages will not protect from these issues as they are fundamentally logic bugs
-
-Due to CPU side-channels and the potency of V8 vulnerabilities, upcoming hardware security features such as memory tagging will likely be bypassable most of the time
-
-Due to the nature of these vulnerabilities, and their uniqueness to JavaScript engines, it seems desirable to build a custom sandboxing mechanism for V8. <br>
+- The attacker has a great amount of control over the memory corruption primitive and can often turn these bugs into highly reliable and fast exploits.
+- Memory safe languages will not protect from these issues as they are fundamentally logic bugs.
+- Due to CPU side-channels and the potency of V8 vulnerabilities, upcoming hardware security features such as memory tagging will likely be bypassable most of the time.
+- Due to the nature of these vulnerabilities, and their uniqueness to JavaScript engines, it seems desirable to build a custom sandboxing mechanism for V8.
 
 Originally, I thought that during JIT compilation, runtime checks or guards were simply used temporarily or tested during execution. But now I understand that the generated machine code itself actually contains those runtime check instructions.
 
@@ -405,9 +401,9 @@ Here, all on-heap pointers were converted to 32-bit compressed pointers. In this
 
 The majority of V8 vulnerabilities can be exploited to corrupt memory (only) in the V8 heap (out-of-bounds accesses, type confusions, et al). With pointer compression enabled, an attacker with the ability to corrupt data in the V8 heap gains no additional capabilities by corrupting a compressed pointer. Instead, to reach outside the V8 heap, the attacker targets one of the remaining raw pointers in the heap (typically an ArrayBuffer or TypedArray backing store pointer). The fundamental idea behind this project is to protect (“sandboxify”) all remaining raw pointers in a way that prevents their abuse by an attacker. On a high level, this is achieved in the following way:
 
-A large (for example 1TB) region of virtual address space - the sandbox - is reserved during initialization of V8. This region contains the pointer compression cage, and so all V8 heaps, as well as ArrayBuffer backing stores and similar objects.
-All objects inside the sandbox, but outside of V8 heaps, are addressed using fixed-size offsets (e.g. 40-bit offsets in the case of a 1TB sandbox) instead of raw pointers.
-All remaining off-heap objects must be referenced through a pointer table, which contains the pointer to the object together with type information to prevent type confusion attacks. Entries in this table are then referenced from objects in the v8 heap through indices.
+- A large (for example 1TB) region of virtual address space - the sandbox - is reserved during initialization of V8. This region contains the pointer compression cage, and so all V8 heaps, as well as ArrayBuffer backing stores and similar objects.
+- All objects inside the sandbox, but outside of V8 heaps, are addressed using fixed-size offsets (e.g. 40-bit offsets in the case of a 1TB sandbox) instead of raw pointers.
+- All remaining off-heap objects must be referenced through a pointer table, which contains the pointer to the object together with type information to prevent type confusion attacks. Entries in this table are then referenced from objects in the v8 heap through indices.
 
 Compared to the past, the memory layout used to look like this:
 
@@ -443,25 +439,25 @@ Most memory regions directly managed by the JS engine are now placed inside one 
 
 Things such as:
 
-ArrayBuffer backing stores
-Wasm memory
-external string data
+- ArrayBuffer backing stores
+- Wasm memory
+- external string data
 
 still exist outside the GC heap, but they are now located inside the sandbox, meaning they are only accessible via sandbox-relative offsets.
 
 Because of this, in modern V8, even if an attacker achieves:
 
-heap object corruption
-backing store corruption
-typed array corruption
+- heap object corruption
+- backing store corruption
+- typed array corruption
 
 the accessible range is fundamentally restricted to memory inside the sandbox.
 
 Unlike before, a JS bug no longer directly leads to arbitrary process memory R/W. Instead, attackers typically need to proceed in stages:
 
-Obtain arbitrary R/W inside the sandbox
-Gain an additional sandbox escape primitive
-Achieve process-wide native memory access
+1. Obtain arbitrary R/W inside the sandbox.
+2. Gain an additional sandbox escape primitive.
+3. Achieve process-wide native memory access.
 
 With this, the ArrayBuffer object from above would become:
 
@@ -486,22 +482,20 @@ JSArrayBuffer (heap object)
 
 The primary purposes of ArrayBufferExtension include:
 
-```
-backing store lifetime management
-connecting GC with external memory accounting
-embedder/native-side bookkeeping
-ArrayBuffer tracking
-detach state management
-cleanup callback management
-```
+- backing store lifetime management
+- connecting GC with external memory accounting
+- embedder/native-side bookkeeping
+- ArrayBuffer tracking
+- detach state management
+- cleanup callback management
 
 In particular, because the ArrayBuffer backing store resides outside the GC heap (in native memory), the V8 garbage collector could not directly manage it through ordinary mark-and-sweep mechanisms alone.
 
 As a result, V8 used extension structures like this to track:
 
-how much external memory is currently being used
-when the memory should be freed
-which isolate the memory belongs to
+- how much external memory is currently being used
+- when the memory should be freed
+- which isolate the memory belongs to
 
 Previously, this structure existed as a native object outside the V8 heap, which also made it a potential exploitation target. However, with the introduction of the V8 sandbox, it is now located inside the sandbox region, adding an additional step for attackers.
 
@@ -513,7 +507,7 @@ Finally, it is worth noting that, although not an explicit goal, this design als
 
 The remainder of this section discusses the central sandboxing mechanisms in some more detail, then concludes with a brief summary of the design.
 
-## Sandbox Address Space 
+## Sandbox Address Space
 
 The sandbox currently assumes a shared pointer compression cage which is shared between all V8 Isolates and thus Heaps in the process. This 4GB region is then placed at the start of a much larger (e.g. 1TB) virtual address space reservation - the sandbox - which is surrounded by large guard regions on both sides to prevent indexed accesses to reach outside of the sandbox. The remaining space in the sandbox is used to allocate other objects directly referenced by V8, such as ArrayBuffer backing stores and the 10GB Wasm memory cages.
 
@@ -600,13 +594,15 @@ Pointer Compression:
   Purpose: to reduce 64-bit pointers to 32-bit values
 ```
 
-Pointer Tables
+## Pointer Tables
+
 All objects located outside the sandbox (“external entities”) are referenced through pointer tables, which are themselves also located outside of the sandbox. This is conceptually similar to the file descriptor table used by an operating system’s kernel or a Wasm table.
 
 In general, the sandbox differentiates between three different types of external entities:
-Executable code, which is managed by V8’s garbage collector but allocated in a dedicated code space, located outside of the sandbox. These are referenced via a CodePointerTable (CPT), discussed in more detail in this [document](https://docs.google.com/document/d/1CPs5PutbnmI-c5g7e_Td9CNGh5BvpLleKCqUnqmD82k/edit?usp=sharing).
-V8 objects managed by V8’s garbage collector but located outside of the sandbox for security reasons. See the Trusted Objects section below and this document for more details. These are referenced via a TrustedPointerTable (TPT).
-Non-V8 objects that are not directly managed by V8’s garbage collector. These include all embedder-managed objects such as DOM nodes as well as the ArrayBufferExtension object from the example above and many other types of objects. These are referenced via an ExternalPointerTable (EPT), which is discussed in more detail in this [document](https://docs.google.com/document/d/1V3sxltuFjjhp_6grGHgfqZNK57qfzGzme0QTk0IXDHk/edit?usp=sharing)
+
+- Executable code, which is managed by V8’s garbage collector but allocated in a dedicated code space, located outside of the sandbox. These are referenced via a CodePointerTable (CPT), discussed in more detail in this [document](https://docs.google.com/document/d/1CPs5PutbnmI-c5g7e_Td9CNGh5BvpLleKCqUnqmD82k/edit?usp=sharing).
+- V8 objects managed by V8’s garbage collector but located outside of the sandbox for security reasons. See the Trusted Objects section below and this document for more details. These are referenced via a TrustedPointerTable (TPT).
+- Non-V8 objects that are not directly managed by V8’s garbage collector. These include all embedder-managed objects such as DOM nodes as well as the ArrayBufferExtension object from the example above and many other types of objects. These are referenced via an ExternalPointerTable (EPT), which is discussed in more detail in this [document](https://docs.google.com/document/d/1V3sxltuFjjhp_6grGHgfqZNK57qfzGzme0QTk0IXDHk/edit?usp=sharing).
 
 This section now briefly discusses how those objects are protected, in particular how memory safety is achieved. For a more detailed discussion of these mechanisms, refer to the design documents linked above.
 
@@ -733,6 +729,7 @@ This part can be summarized as follows:
    - if the entry has been reused, it may point to another live object.
 6. However, if the new object has a different type, the access will be blocked by the type checking mechanism.
 ```
+
 ## Spatial Memory Safety
 
 Some objects such as ExternalStrings reference a buffer of data of a given length. This sandbox must ensure that any access to those external buffers stays in bounds of the allocated memory. This is generally possible in two ways: (1) by storing length information in the table or the external object itself and bounds-checking against that or (2) by moving those buffers into the sandbox.
@@ -795,6 +792,7 @@ After:
 With this design, even if an attacker manages to create an incorrect buffer access range, the accessible memory is at least limited to the inside of the sandbox. This reduces the risk of reading from or writing to arbitrary memory outside the sandbox.
 
 ## Type Safety
+
 To ensure type safety of external objects, the table entries consist of pairs of pointers and type tags (with the type tags potentially stored in unused pointer bits for efficiency). Before an external object is accessed, the type tag of the entry must be checked against the caller-supplied expected type, either with an explicit check or by ensuring that wrong types will result in an inaccessible address.
 
 In simple terms, if an entry in the external pointer table only stores an address, an attacker may be able to abuse it, as mentioned earlier. Therefore, the table also stores what kind of external object the address points to, making it slightly safer to use.
@@ -818,6 +816,7 @@ Entry 2:
 ```
 
 ## Thread Safety
+
 The sandbox has to prevent concurrent access to external objects that aren’t thread safe. Ideally, this will be achieved by having a dedicated pointer table per Isolate and thus per mutator thread and ensuring that a non-thread-safe external object is only referenced from at most one table.
 
 This section explains that external objects may become dangerous if they are accessed concurrently by multiple threads, so the pointer table structure is used to restrict the scope of access.
@@ -903,7 +902,9 @@ Thread B
   does not access X directly
   only sends messages/requests
 ```
+
 ## Trusted Objects
+
 There are a number of internal V8 objects that do not contain pointers, but which could still allow an attacker to break out of the sandbox. One example are code-like objects, such as interpreter bytecode, JIT-compiled machine code, and any related metadata. These are not generally robust against corruption and will thus allow an attacker to escape from the sandbox. Other examples could include heap allocator metadata or V8 objects that contain indices into off-heap data structures.
 
 In general, for the sandbox to become robust, these objects either need to move out of the V8 heap into a “trusted” heap space, become robust against corruption, be treated as untrusted (and have some way of checking their integrity on access), or be marked as read-only.
@@ -985,5 +986,5 @@ Trusted Heap / Outside the Sandbox or Protected Region
 │ Actual important internal objects │
 └──────────────────────────────┘
 ```
-Next time, I think I should study the fundamentals more thoroughly until I can understand the basic concepts accurately. That way, I can build a stronger foundation and understand the later material more quickly.
 
+Next time, I think I should study the fundamentals more thoroughly until I can understand the basic concepts accurately. That way, I can build a stronger foundation and understand the later material more quickly.
