@@ -988,3 +988,5 @@ Trusted Heap / Outside the Sandbox or Protected Region
 ```
 
 Next time, I think I should study the fundamentals more thoroughly until I can understand the basic concepts accurately. That way, I can build a stronger foundation and understand the later material more quickly.
+
+<!-- spacing update: 2026-07-07 -->
