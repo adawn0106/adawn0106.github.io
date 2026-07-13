@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 title: "Understanding V8 Sandbox (Part 2)"
-date: 2026-05-13
+date: 2026-07-07
 img: posts/20240925/v8_picture.png
 tags: [V8, Sandbox]
 category: Sandbox
