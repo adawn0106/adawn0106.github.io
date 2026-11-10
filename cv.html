@@ -1,161 +1,236 @@
 ---
-layout: default
+layout: null
 title: CV
+description: Security research, experience, projects, and achievements of Do Young Park (adawn).
 permalink: /cv/
-blog_skin: true
 ---
-
-<!-- CV content updated: 2026-11-11 -->
-
-<style>
-.cv-shell { max-width: 960px; }
-.cv-page { color: var(--blog-fg); }
-.cv-header { border-bottom: 2px solid var(--blog-fg); margin-bottom: 30px; padding-bottom: 20px; }
-.cv-header h1 { margin: 0; font-size: clamp(38px, 6vw, 64px); line-height: 1.05; letter-spacing: 0; }
-.cv-header p { max-width: 720px; margin: 12px 0 16px; color: var(--blog-muted); font-size: 18px; line-height: 1.65; }
-.cv-contact { display: flex; flex-wrap: wrap; gap: 9px 14px; }
-.cv-contact a { color: var(--blog-accent); font-size: 14px; font-weight: 700; text-decoration: none; }
-.cv-page section { margin-top: 28px; }
-.cv-page h2 { margin: 0 0 12px; border-bottom: 1px solid var(--blog-border); padding-bottom: 7px; color: var(--blog-fg); font-size: 18px; line-height: 1.2; letter-spacing: 0; text-transform: uppercase; }
-.cv-entry { margin-bottom: 16px; }
-.cv-entry h3 { margin: 0 0 4px; color: var(--blog-fg); font-size: 18px; line-height: 1.3; letter-spacing: 0; }
-.cv-page p, .cv-page li { color: #2f343b; font-size: 15px; line-height: 1.65; }
-.cv-meta { margin: 0; color: var(--blog-muted) !important; font-size: 14px !important; font-weight: 700; }
-.cv-page ul { margin: 8px 0 0; padding-left: 20px; }
-.cv-award-group { margin-top: 18px; }
-.cv-award-group h3 { margin: 0 0 6px; color: var(--blog-fg); font-size: 17px; line-height: 1.3; }
-.cv-award-group ul { margin-top: 0; }
-.cv-skills { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 !important; list-style: none; }
-.cv-skills li { border: 1px solid var(--blog-border); border-radius: 999px; padding: 6px 10px; background: var(--blog-soft); color: var(--blog-muted); font-size: 13px; font-weight: 700; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Do Young Park — CV · Adawn</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Do Young Park — Security Researcher">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta name="theme-color" content="#f8f9f5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="{{ '/assets/img/favicon/favicon.ico' | relative_url }}" type="image/x-icon">
+  <style>:root{--paper:#f8f9f5;--ink:#202e27;--muted:#626c65;--green:#286448;--line:#dce2d8;--soft:#eef2e8;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"Noto Sans KR",sans-serif;--serif:Georgia,"Times New Roman",serif;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}::selection{background:#d4e3bc;color:#1d3527}a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}a:hover{color:var(--green)}button{font:inherit}a,button,summary{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:5px;border-radius:2px}button,a,summary{touch-action:manipulation}h1,h2,h3,p,ul,ol{margin:0}h1,h2,h3{font-weight:500}ul{padding-left:20px}li::marker{color:#80917e}h1,h2,h3{text-wrap:balance}.cv-shell{max-width:1184px;padding:0 32px;margin:auto}.site-header{height:100px;display:flex;align-items:center;border-bottom:1px solid var(--line);gap:30px}.wordmark{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.6px;text-decoration:none}.brand-symbol{background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1;width:36px;height:36px;border-radius:5px;padding-bottom:6px}.site-nav{display:flex;gap:28px;margin-left:auto}.site-nav a{display:flex;gap:7px;align-items:center;text-decoration:none;color:var(--muted);font-size:13px;padding:12px 0}.site-nav a[aria-current]{color:var(--green);font-weight:600}.nav-dot{height:5px;width:5px;border-radius:50%;background:var(--green)}.print-button{background:transparent;border:1px solid var(--line);border-radius:4px;padding:8px 13px;font-size:12px;color:var(--ink);cursor:pointer;margin-left:16px}.print-button:hover{border-color:var(--green);background:var(--soft)}.print-button span{margin-left:18px}.js-only{display:none}.js .js-only{display:block}.cv-hero{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:76px;align-items:center;padding:72px 0 58px}.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:1.1px;text-transform:uppercase;display:flex;align-items:center;gap:10px;color:var(--green);line-height:1.6}.small-line{height:1px;width:23px;background:var(--green);flex-shrink:0}.eyebrow-slash{color:#a7b2a5;margin:0 3px}.cv-hero h1{font-family:var(--serif);font-size:clamp(70px,7.3vw,104px);font-weight:400;letter-spacing:-5px;line-height:.99;margin:26px 0 24px}.hero-alias{font-family:var(--mono);font-size:13px;letter-spacing:0;border:1px solid #c5d3bf;border-radius:30px;display:inline-block;vertical-align:middle;padding:9px 16px;margin-left:25px;color:var(--green);transform:rotate(-6deg)}.hero-description{max-width:520px;color:var(--muted);font-size:15px;line-height:1.85}.cv-contact{display:flex;align-items:center;gap:21px;flex-wrap:wrap;margin-top:26px}.cv-contact a{padding:10px 0;font-size:12px;text-decoration:none;white-space:nowrap}.cv-contact a span{color:#82917e;margin-left:5px}.cv-contact .email-link{background:var(--ink);color:white;border-radius:4px;padding:10px 17px}.cv-contact .email-link:hover{background:var(--green)}.cv-contact .email-link span{color:#c4d7b4;margin-left:16px}.hero-email{display:inline-block;font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;margin-top:12px}.focus-panel{background:#203c2d;color:#eff4e8;padding:28px 28px 20px;border-radius:5px;position:relative;overflow:hidden}.focus-panel:before{content:"";position:absolute;width:220px;height:220px;border:1px solid #4c6541;border-radius:50%;right:-130px;top:-70px;pointer-events:none}.focus-heading{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:1.3px;color:#c2d6af}.focus-heading>span:last-child{font-family:var(--sans);font-size:20px}.focus-intro{font-family:var(--serif);font-size:29px;line-height:1.25;letter-spacing:-.7px;margin:30px 0 25px}.focus-list{list-style:none;padding:0}.focus-list li{display:flex;align-items:center;gap:16px;border-top:1px solid #435748;padding:11px 0;font-size:12px}.focus-list li>span{font:10px var(--mono);color:#b7cba5}.focus-footer{border-top:1px solid #435748;display:flex;justify-content:space-between;padding-top:22px;margin-top:4px;color:#b7cba5;font:9px var(--mono)}.highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:23px 0 26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.highlights>a{display:flex;flex-direction:column;text-decoration:none;padding:0 27px;border-right:1px solid var(--line)}.highlights>a:first-child{padding-left:0}.highlights>a:last-child{border:0;padding-right:0}.highlight-label{font:9px var(--mono);letter-spacing:1px;color:var(--muted);margin-bottom:11px}.highlights strong{font-size:15px;letter-spacing:-.3px;font-weight:600}.highlight-detail{display:flex;gap:8px;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:5px}.highlight-detail>span{color:var(--green)}.highlights>a:hover strong{color:var(--green)}.cv-layout{display:grid;grid-template-columns:180px minmax(0,1fr);gap:70px;padding-top:62px}.cv-sidebar{align-self:start;position:sticky;top:32px}.index-label{font:9px var(--mono);letter-spacing:1.5px;color:var(--muted);margin-bottom:18px}.section-nav a{display:flex;gap:12px;text-decoration:none;font-size:11px;color:var(--muted);padding:7px 0}.section-nav a>span{font:9px var(--mono);color:#9ba798;min-width:15px;padding-top:4px}.section-nav a[aria-current],.section-nav a:hover{color:var(--green);font-weight:600}.section-nav a[aria-current]>span{color:var(--green)}.sidebar-note{font:italic 16px/1.6 var(--serif);color:#7b8779;border-top:1px solid var(--line);padding-top:22px;margin-top:28px}.cv-content{min-width:0}.cv-section{padding:0 0 48px;margin:0 0 46px;border-bottom:1px solid var(--line);scroll-margin-top:30px}.section-heading{display:flex;align-items:baseline;gap:13px;margin-bottom:28px}.section-number{font:10px var(--mono);color:var(--green)}.section-heading h2{font-family:var(--serif);font-size:32px;line-height:1.2;letter-spacing:-.7px}.cv-section p,.cv-section li{font-size:14px;line-height:1.85;color:#505e52}.cv-section a{color:var(--green);overflow-wrap:anywhere}.cv-section>p{font-size:15px;line-height:1.95}#overview{padding-bottom:40px}#overview>p{max-width:720px}.cv-entry h3{font-size:15px;font-weight:600;letter-spacing:-.2px;line-height:1.55;color:var(--ink)}.cv-meta{font-family:var(--mono);font-size:10px!important;line-height:1.8!important;color:var(--muted)!important;margin-top:5px}.cv-entry{margin-bottom:24px}.cv-entry:last-child{margin-bottom:0}#experience .cv-entry{padding:0 0 0 22px;position:relative}#experience .cv-entry:before{position:absolute;content:"";left:0;top:8px;width:6px;height:6px;border:1px solid #75926b;border-radius:50%;background:var(--paper)}#experience .cv-entry:after{position:absolute;content:"";left:3px;top:21px;width:1px;height:calc(100% + 3px);background:var(--line)}#experience .cv-entry:last-child:after{display:none}#experience .cv-entry:nth-child(2):before,#experience .cv-entry:nth-child(3):before{background:var(--green);border-color:var(--green)}.cv-award-group{border:1px solid var(--line);border-radius:5px;margin-bottom:10px;background:#fbfcf9}.cv-award-group summary{list-style:none;cursor:pointer;padding:17px 21px;display:flex;align-items:center;justify-content:space-between;gap:20px}.cv-award-group summary::-webkit-details-marker{display:none}.cv-award-group summary h3{font-size:14px;font-weight:600}.cv-award-group summary:hover{color:var(--green);background:var(--soft)}.disclosure-icon{font:20px/1 var(--mono);color:var(--green);transition:transform .2s}.cv-award-group[open] .disclosure-icon{transform:rotate(45deg)}.cv-award-group[open]>summary{border-bottom:1px solid var(--line)}.cv-award-group>ul{list-style:none;padding:0 21px}.cv-award-group>ul>li{padding:20px 0;border-bottom:1px solid var(--line);color:var(--ink);font-weight:500;overflow-wrap:anywhere}.cv-award-group>ul>li:last-child{border:0}.cv-award-group li li{font-size:13px;font-weight:400}.cv-award-group ul ul{margin-top:8px;padding-left:16px}.cv-award-group>ul>li>a:first-child{font-family:var(--mono);font-size:12px;font-weight:600}.cv-award-group>ul>li>a:only-child{font-family:inherit;font-size:inherit}.cv-award-group:last-child{margin-bottom:0}#ctf>.cv-meta{margin:-15px 0 20px;font-size:11px!important}#ctf>ul{list-style:none;padding:0}.ctf-result{display:grid;grid-template-columns:76px minmax(0,1fr) 140px;align-items:start;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}.ctf-result:first-child{border-top:1px solid var(--line)}.ctf-rank{font:11px/1.6 var(--mono);border:1px solid var(--line);border-radius:4px;text-align:center;padding:6px 4px;color:var(--muted);background:#f2f4ee}.podium .ctf-rank{color:#366044;background:#eaf0df;border-color:#d1dec4}.ctf-event{font-size:13px;color:var(--ink);line-height:1.8}.ctf-date{font-size:10px;color:var(--muted);text-align:right;line-height:1.7}.ctf-event a{text-decoration:none;font-weight:600}.ctf-event a:hover{text-decoration:underline}.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.project-grid .cv-entry{padding:22px;margin:0;border:1px solid var(--line);border-radius:5px;background:#fbfcf9}.project-grid .cv-entry h3{font-size:15px;line-height:1.55}.project-grid .cv-entry ul{margin-top:15px;padding-left:16px}.project-grid .cv-entry li{font-size:13px;line-height:1.8;margin-top:5px}.cv-simple-list{list-style:none;padding:0}.cv-simple-list>li{padding:13px 0;border-bottom:1px solid var(--line)}.cv-simple-list>li:first-child{padding-top:0}.cv-simple-list>li:last-child{border:0;padding-bottom:0}#certifications .cv-simple-list,#training .cv-simple-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:30px}#certifications .cv-simple-list>li,#training .cv-simple-list>li{padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}#education .cv-entry p:not(.cv-meta){margin-top:4px}.cv-skills{display:flex;flex-wrap:wrap;gap:9px;padding:0;list-style:none}.cv-skills li{font-size:11px;border:1px solid #d8dfd0;background:var(--soft);padding:7px 12px;border-radius:4px;color:#476047}#skills{margin-bottom:0;border-bottom:0;padding-bottom:0}.cv-footer{border-top:1px solid var(--line);margin-top:85px;padding:38px 0 27px}.footer-email{font-family:var(--serif);font-size:34px;line-height:1.3;letter-spacing:-.7px;text-decoration:none;display:inline-block;margin-top:10px}.footer-email>span{font-family:var(--sans);font-size:24px;margin-left:15px;color:var(--green)}.footer-meta{font:10px var(--mono);color:var(--muted);display:flex;justify-content:space-between;gap:20px;margin-top:35px}.footer-meta a{text-decoration:none}.skip-link{position:absolute;left:15px;top:0;transform:translateY(-110%);background:var(--ink);color:white;padding:10px 18px;z-index:10}.skip-link:focus{transform:translateY(0)}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(min-width:1400px){.cv-shell{max-width:1240px}.cv-hero{gap:95px}.cv-layout{gap:90px}}
+@media(max-width:1000px){.cv-hero{gap:35px}.focus-panel{padding:23px}.focus-intro{font-size:26px}.cv-layout{grid-template-columns:145px minmax(0,1fr);gap:35px}.ctf-result{grid-template-columns:70px minmax(0,1fr);column-gap:14px;row-gap:4px}.ctf-rank{grid-row:span 2}.ctf-date{grid-column:2;text-align:left}.highlights strong{font-size:13px}.highlights>a{padding:0 18px}.hero-alias{margin-left:17px}}
+@media(max-width:760px){.cv-shell{padding:0 22px}.site-header{height:78px;gap:15px}.site-nav{gap:20px}.print-button{display:none!important}.cv-hero{grid-template-columns:1fr;gap:32px;padding:48px 0 34px}.cv-hero h1{font-size:84px;letter-spacing:-4px;margin-top:22px}.hero-description{max-width:540px;font-size:14px}.focus-panel{padding:21px 24px}.focus-intro{font-size:25px;margin:14px 0 15px}.focus-list{display:flex;flex-wrap:wrap;gap:0 20px}.focus-list li{flex:1 1 150px;gap:10px;font-size:11px}.focus-footer{padding-top:13px}.highlights{grid-template-columns:1fr;padding:0;border-top:0}.highlights>a,.highlights>a:first-child,.highlights>a:last-child{padding:17px 0;border:0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;column-gap:12px}.highlight-label{grid-column:1/-1;margin-bottom:5px}.highlights strong{font-size:14px}.highlight-detail{font-size:10px;margin-top:0;align-items:center}.highlight-detail>span{display:none}.cv-layout{display:block;padding-top:28px}.cv-sidebar{position:static;margin-bottom:38px}.section-nav{display:flex;overflow-x:auto;gap:18px;padding:0 0 12px;border-bottom:1px solid var(--line);scrollbar-width:thin;scrollbar-color:#b6c4ae transparent}.section-nav a{white-space:nowrap;padding:12px 0;font-size:12px}.section-nav a>span,.index-label,.sidebar-note{display:none}.cv-section{padding-bottom:32px;margin-bottom:34px}.section-heading{margin-bottom:22px;gap:11px}.section-heading h2{font-size:29px}.cv-section>p{font-size:14px}.project-grid{gap:12px}.project-grid .cv-entry{padding:18px}.cv-footer{margin-top:48px}.footer-email{font-size:28px}.footer-email>span{font-size:20px}.hero-alias{font-size:12px;padding:9px 15px}.eyebrow{font-size:9px;letter-spacing:.6px;gap:8px}.small-line{width:18px}}
+@media(max-width:480px){.cv-shell{padding:0 20px}.wordmark{font-size:18px}.brand-symbol{height:31px;width:31px;font-size:26px}.site-nav{gap:17px}.site-nav a{font-size:12px}.cv-hero h1{font-size:78px}.cv-contact{gap:17px}.cv-contact a{font-size:11px}.hero-alias{margin-left:20px}.focus-intro{font-size:23px}.focus-list{display:block}.focus-list li{font-size:12px}.highlights>a,.highlights>a:first-child,.highlights>a:last-child{display:block}.highlight-label{display:block}.highlight-detail{margin-top:4px;display:flex;justify-content:space-between}.highlight-detail>span{display:block}.project-grid{grid-template-columns:1fr}.cv-award-group summary{padding:15px 16px}.cv-award-group>ul{padding:0 16px}.ctf-result{grid-template-columns:65px minmax(0,1fr);gap:4px 13px}.ctf-rank{font-size:10px;padding:6px 4px}.ctf-event{font-size:12px}.ctf-date{font-size:10px}#certifications .cv-simple-list,#training .cv-simple-list{grid-template-columns:1fr}.footer-email{font-size:25px}.footer-email>span{margin-left:5px}.section-heading h2{font-size:27px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+@media print{@page{margin:16mm}body{background:white;color:black;font-size:10pt}.cv-shell{max-width:none;padding:0}.site-header,.cv-sidebar,.highlights,.cv-footer,.focus-panel,.skip-link{display:none!important}.cv-hero{display:block;padding:0 0 20px;border-bottom:1px solid #aaa}.cv-hero h1{font-size:44pt;letter-spacing:-2px;margin:12px 0}.cv-hero h1 br{display:none}.cv-hero h1 br:after{content:" "}.cv-hero h1 .hero-alias{font-size:10pt;border:0;transform:none}.hero-description{font-size:10pt;max-width:none}.cv-contact{margin-top:12px}.cv-contact .email-link{background:white;color:black;padding:0}.hero-email{font-size:9pt}.cv-layout{display:block;padding-top:22px}.cv-section{margin:0 0 20px;padding:0 0 20px}.section-heading{margin-bottom:14px;break-after:avoid}.section-heading h2{font-size:19pt}.cv-section p,.cv-section li,.cv-section>p{font-size:9pt;line-height:1.6}.cv-entry,.cv-award-group>ul>li,.ctf-result{break-inside:avoid}.cv-entry h3{font-size:11pt}.cv-award-group{background:white;border-color:#ccc;break-inside:auto}.cv-award-group summary{padding:9px 14px}.cv-award-group summary h3{font-size:11pt}.disclosure-icon{display:none}.cv-award-group>ul{padding:0 14px}.cv-award-group>ul>li{padding:10px 0}.ctf-result{grid-template-columns:75px 1fr 120px;padding:10px 0}.ctf-date{grid-column:auto}.ctf-rank{grid-row:auto;background:white!important}.project-grid{display:block}.project-grid .cv-entry{background:white;margin:0 0 10px;padding:14px}.cv-skills li{background:white}.hero-email,.cv-contact,.cv-entry h3{color:black!important}}
 </style>
-
-<div class="blog-shell cv-shell">
-  <header class="blog-header">
-    <a class="blog-brand" href="{{ '/' | relative_url }}">Adawn</a>
-    <nav class="blog-nav" aria-label="Primary">
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/posts/' | relative_url }}">Posts</a>
-      <a href="{{ '/cv/' | relative_url }}" aria-current="page">CV</a>
-    </nav>
-  </header>
-
-  <article class="cv-page">
-    <header class="cv-header">
-      <h1>Do Young Park (adawn)</h1>
-      <p>Security researcher focused on vulnerability analysis, browser internals, exploit development, and AI harness development.</p>
-      <div class="cv-contact">
-        <a href="mailto:adawn0106@gmail.com">adawn0106@gmail.com</a>
-        <a href="https://adawn0106.github.io">Blog</a>
-        <a href="https://adawn0106.tistory.com">Tistory</a>
-        <a href="https://www.linkedin.com/in/do-young-park-b10388321">LinkedIn</a>
-      </div>
+</head>
+<body>
+  <a class="skip-link" href="#overview">Skip to CV content</a>
+  <div class="cv-shell" id="top">
+    <header class="site-header">
+      <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="Adawn home"><span class="brand-symbol" aria-hidden="true">a.</span>Adawn</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/posts/' | relative_url }}">Posts</a>
+        <a href="{{ '/cv/' | relative_url }}" aria-current="page">CV<span class="nav-dot" aria-hidden="true"></span></a>
+      </nav>
+      <button class="print-button js-only" type="button" id="print-cv">Print CV <span aria-hidden="true">↗</span></button>
     </header>
-
-    <section>
-      <h2>Summary</h2>
-      <p>Security researcher with hands-on experience in V8 vulnerability analysis, 1-day exploit reproduction, JavaScript engine internals, and security project leadership. Researches AI harnesses for vulnerability analysis and applies them to bug bounty work. Experienced in debugging browser vulnerabilities from root cause to exploit primitives, documenting research through technical writeups, and leading student security teams and research projects.</p>
-    </section>
-
-    <section>
-      <h2>Education</h2>
-      <div class="cv-entry"><h3>Dongseo University</h3><p>B.S. in Information Security, expected Mar 2027</p><p class="cv-meta">Mar 2020 - Mar 2027</p></div>
-    </section>
-
-    <section>
-      <h2>Experience and Activities</h2>
-      <div class="cv-entry"><h3>White Hat School 4th (WHS), Windows Kernel ring0 Team</h3><p class="cv-meta">Project Leader (PL), Ongoing</p></div>
-      <div class="cv-entry"><h3>SK Shieldus EQST LAB, V8 Team</h3><p class="cv-meta">Security Researcher, Jan 2026 - Present</p></div>
-      <div class="cv-entry"><h3>ION Study Project</h3><p class="cv-meta">Member, May 2026 - Sep 2026</p></div>
-      <div class="cv-entry"><h3>Best of the Best 14th, Vulnerability Analysis Track</h3><p class="cv-meta">Trainee / Project Manager, Jul 2025 - Dec 2025</p></div>
-      <div class="cv-entry"><h3>BoB 14th, Scratch Scratch Bugbug Team</h3><p class="cv-meta">Project Manager, Sep 2025 - Dec 2025</p></div>
-      <div class="cv-entry"><h3>RubiyaLab CTF Team</h3><p class="cv-meta">Member, Jul 2025 - Present</p></div>
-      <div class="cv-entry"><h3>Vulnerability Research Club</h3><p class="cv-meta">Member, Apr 2025 - Jul 2025</p></div>
-      <div class="cv-entry"><h3>Dongseo University CNSL</h3><p class="cv-meta">President, Jan 2025 - Jan 2026</p></div>
-      <div class="cv-entry"><h3>SegFau1t / whs{segfault}</h3><p class="cv-meta">Project Manager, May 2024 - Jun 2025</p></div>
-      <div class="cv-entry"><h3>White Hat School 2nd</h3><p class="cv-meta">Trainee, Mar 2024 - Sep 2024</p></div>
-    </section>
-
-    <section>
-      <h2>Selected Projects</h2>
-      <div class="cv-entry"><h3>NAS Vulnerability Research</h3><p class="cv-meta">breadhackers, completed Sep 2026</p></div>
-      <div class="cv-entry"><h3>CVE-2024-0517 1-day Analysis</h3><p class="cv-meta">Project Manager, May 2024 - Sep 2024</p><ul><li>Led a team project analyzing CVE-2024-0517 in V8 from environment setup to exploitation.</li><li>Studied Maglev, allocation folding, garbage collection, OOB access, WebAssembly RWX memory, fake object, address-of, AAR, and AAW primitives.</li><li>Debugged the vulnerability locally and adapted public PoC logic to match the target memory layout.</li><li>Presented the work at the 29th Hacking Camp.</li></ul></div>
-      <div class="cv-entry"><h3>CVE-2020-6418 1-day Analysis</h3><p class="cv-meta">Dec 2024 - Jan 2025</p><ul><li>Analyzed a V8 TurboFan vulnerability involving runtime map changes through JavaScript Proxy behavior.</li><li>Implemented exploit primitives including address-of, fake object, arbitrary read/write, and WebAssembly RWX memory control.</li><li>Achieved shell execution and documented the analysis as a multi-part technical blog series.</li><li>Presented the topic at the 2025 CCA offline seminar.</li></ul></div>
-      <div class="cv-entry"><h3>Internal CTF Platform and Event Operation</h3><p class="cv-meta">Project Lead, Jan 2025 - Mar 2025</p><ul><li>Led the development and operation of an internal CTF event for a university security club.</li><li>Coordinated platform development, challenge design, event operations, logs, tickets, and participant feedback.</li></ul></div>
-      <div class="cv-entry"><h3>IP Camera Security Threat Analysis and Guidelines</h3><ul><li>Analyzed common IP camera risks including default credentials, weak settings, outdated firmware, and unsafe network exposure.</li><li>Built a controlled ESP32-based test environment and proposed practical user security guidelines.</li></ul></div>
-      <div class="cv-entry"><h3>JavaScript Engine Fuzzing Research</h3><ul><li>Studied Fuzzilli-based JavaScript engine fuzzing for V8, JavaScriptCore, and SpiderMonkey.</li><li>Investigated coverage limitations, crash analysis, and visualization-driven fuzzing improvements.</li></ul></div>
-      <div class="cv-entry"><h3>State-Guided Fuzzing with Fuzzilli</h3><p class="cv-meta">Project Manager, BoB 14th</p><ul><li>Led a research project applying state-guided fuzzing concepts to V8.</li><li>Focused on internal state transitions such as element transitions and inline cache transitions as vulnerability discovery targets.</li></ul></div>
-    </section>
-
-    <section><h2>Presentations</h2><ul><li><a href="https://hackingcamp.org/files/slides/33/2d46aae983a7f2ed79c5d1a3ee1b976c.pdf">33rd Hacking Camp: How Do You Live? (with V8)</a></li><li>2025 CCA Offline Seminar: CVE-2020-6418 and V8 vulnerability exploitation.</li><li>29th Hacking Camp: CVE-2024-0517 analysis and beginner-oriented V8 vulnerability research.</li></ul></section>
-
-    <section class="cv-awards"><h2>Awards</h2>
-      <div class="cv-award-group">
-        <h3>Windows</h3>
-        <ul>
-          <li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96074">CVE-2026-96074</a> (Windows AppX Package Manager), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>A heap-based buffer overflow can allow local elevation of privilege.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96074">Microsoft Security Update Guide</a></li></ul></li>
-          <li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-105580">CVE-2026-105580</a> (Windows Management Instrumentation), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>A heap-based buffer overflow can allow local code execution.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-105580">Microsoft Security Update Guide</a></li></ul></li>
-          <li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-119887">CVE-2026-119887</a> (Windows Installer), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>Use of an uninitialized resource can disclose information over a network.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-119887">Microsoft Security Update Guide</a></li></ul></li>
-          <li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96067">CVE-2026-96067</a> (Microsoft Color Management), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>An integer overflow can allow code execution when an application processes a crafted color profile.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96067">Microsoft Security Update Guide</a></li></ul></li>
-          <li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96086">CVE-2026-96086</a> (Windows WLAN Service), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>An out-of-bounds read can allow denial of service over an adjacent network.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96086">Microsoft Security Update Guide</a></li></ul></li>
-          <li><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70068">CVE-2026-70068</a> (Windows Client-Side Caching Service), Microsoft Security Response Center (MSRC), October 13, 2026<ul><li>A heap-based buffer overflow in the CSC service can allow elevation of privilege over a network.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70068">Microsoft Security Update Guide</a></li></ul></li>
-          <li>CVE-2026-73006, Microsoft Security Response Center (MSRC), September 8, 2026<ul><li>Status: Duplicate.</li></ul></li>
-        </ul>
+    <main>
+      <header class="cv-hero">
+        <div class="hero-main">
+          <p class="eyebrow"><span class="small-line" aria-hidden="true"></span>Security researcher <span class="eyebrow-slash">/</span> Curriculum vitae</p>
+          <h1>Do Young<br> Park<span class="hero-alias">adawn</span></h1>
+          <p class="hero-description">Security researcher focused on vulnerability analysis, browser internals, exploit development, and AI harness development.</p>
+          <div class="cv-contact">
+            <a class="email-link" href="mailto:adawn0106@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/do-young-park-b10388321">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a href="https://adawn0106.github.io">Blog <span aria-hidden="true">↗</span></a>
+            <a href="https://adawn0106.tistory.com">Tistory <span aria-hidden="true">↗</span></a>
+          </div>
+          <a class="hero-email" href="mailto:adawn0106@gmail.com">adawn0106@gmail.com</a>
+        </div>
+        <aside class="focus-panel" aria-label="Research focus">
+          <div class="focus-heading"><span>RESEARCH FOCUS</span><span aria-hidden="true">↗</span></div>
+          <p class="focus-intro">Understand deeply.<br> Build deliberately.</p>
+          <ol class="focus-list">
+            <li><span>01</span>Vulnerability analysis</li>
+            <li><span>02</span>Browser internals</li>
+            <li><span>03</span>AI harness development</li>
+          </ol>
+          <div class="focus-footer"><span>adawn / security research</span><span aria-hidden="true">[ ]</span></div>
+        </aside>
+      </header>
+      <div class="highlights" aria-label="At a glance">
+        <a href="#experience"><span class="highlight-label">EXPERIENCE</span><strong>SK Shieldus · EQST LAB</strong><span class="highlight-detail">V8 Team <span aria-hidden="true">↗</span></span></a>
+        <a href="#awards"><span class="highlight-label">RESEARCH</span><strong>Windows, V8 &amp; beyond</strong><span class="highlight-detail">Vulnerability research &amp; recognition <span aria-hidden="true">↗</span></span></a>
+        <a href="#ctf"><span class="highlight-label">RECENT ACHIEVEMENT</span><strong>1st Place · Ulsan CTF</strong><span class="highlight-detail">Grand Prize, CTF Division · 2026 <span aria-hidden="true">↗</span></span></a>
       </div>
-      <div class="cv-award-group">
-        <h3>V8</h3>
-        <ul>
-          <li>V8 M148 n-day vulnerability exploit submission, Google VRP, May 2026<ul><li>Reproduced and successfully exploited a V8 M148 n-day vulnerability.</li><li>Issue: <a href="https://issuetracker.google.com/issues/511834078">issuetracker.google.com/issues/511834078</a></li></ul></li>
-          <li>V8 M147 n-day vulnerability exploit submission, Google VRP, April 2026<ul><li>Reproduced and successfully exploited a V8 M147 n-day vulnerability.</li><li>Issue: <a href="https://issuetracker.google.com/issues/504713529">issuetracker.google.com/issues/504713529</a></li></ul></li>
-        </ul>
-      </div>
-      <div class="cv-award-group">
-        <h3>WebKit</h3>
-        <ul>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-113904">CVE-2026-113904</a> (WebKit), Apple Security, October 26, 2026<ul><li>Credited by Apple with other researchers for a WebKit use-after-free issue that may cause a process crash when processing crafted web content.</li><li>Advisory: <a href="https://support.apple.com/en-us/149230">Apple iOS and iPadOS 27.2 security update</a></li></ul></li>
-          <li>CVE-2026-43658 (WebKit), Apple Security, May 2026<ul><li>Credited by Apple for reporting a WebKit vulnerability fixed in Safari 26.5.</li><li>Advisory: <a href="https://support.apple.com/en-us/127121">support.apple.com/en-us/127121</a></li></ul></li>
-        </ul>
-      </div>
-      <div class="cv-award-group">
-        <h3>QNAP</h3>
-        <ul>
-          <li>QNAP, 2026<ul><li>CVEs: CVE-2026-53886, CVE-2026-59754, CVE-2026-59757, CVE-2026-59758, CVE-2026-62400, CVE-2026-62402, CVE-2026-62403, CVE-2026-62404, CVE-2026-62408, CVE-2026-62411, CVE-2026-63051, CVE-2026-63053, CVE-2026-63054, CVE-2026-63057, CVE-2026-63063, CVE-2026-63068, CVE-2026-63593, CVE-2026-63597, CVE-2026-63598, CVE-2026-63605, CVE-2026-63607, CVE-2026-63612, CVE-2026-63617, CVE-2026-65849, CVE-2026-65850, CVE-2026-65856, CVE-2026-68007, CVE-2026-68008, CVE-2026-68009, CVE-2026-68015, CVE-2026-68017, CVE-2026-68025, CVE-2026-68030, CVE-2026-68032, CVE-2026-68035, CVE-2026-68037, CVE-2026-68038, CVE-2026-68039, CVE-2026-68040, CVE-2026-68043, CVE-2026-68044, CVE-2026-68046, CVE-2026-68048, CVE-2026-80384, CVE-2026-80400, CVE-2026-80420, CVE-2026-86631, CVE-2026-86640, CVE-2026-92309 (QuTS hero).</li><li>Status: Assigned.</li></ul></li>
-        </ul>
-      </div>
-      <div class="cv-award-group">
-        <h3>Eclipse</h3>
-        <ul>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-91041">CVE-2026-91041</a> (FileX), Eclipse, 2026<ul><li>Fault-tolerant log replay can write past the destination sector when mounting a crafted FAT image.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/filex/security/advisories/GHSA-c8cj-fj9j-426v">FileX advisory</a></li></ul></li>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-96582">CVE-2026-96582</a> (USBX), Eclipse, 2026<ul><li>A truncated HID report descriptor can trigger a heap out-of-bounds read during USB device enumeration.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/usbx/security/advisories/GHSA-f2fv-fqrc-h8jr">USBX advisory</a></li></ul></li>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102711">CVE-2026-102711</a> (ThreadX), Eclipse, 2026<ul><li>The loadable-module loader trusts attacker-controlled image lengths and offsets, enabling a heap out-of-bounds read and leaving module entry points insufficiently validated.</li><li>Advisory: <a href="https://github.com/advisories/GHSA-w4rq-vh43-v5q5">GitHub advisory record</a></li></ul></li>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102718">CVE-2026-102718</a> (NetX Duo), Eclipse, 2026<ul><li>A crafted SNMP OID using BER multibyte length encoding can cause a remote out-of-bounds read and corrupt agent state.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-7qmm-29vg-7hf8">NetX Duo advisory</a></li></ul></li>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102712">CVE-2026-102712</a> (NetX Duo), Eclipse, 2026<ul><li>A crafted DTLS ClientHello can drive an out-of-bounds read that exposes adjacent process memory in the ServerHello response.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-5xr3-wpxf-rw5q">NetX Duo advisory</a></li></ul></li>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102761">CVE-2026-102761</a> (NetX Duo), Eclipse, 2026<ul><li>A masked WebSocket frame split across a packet chain can overwrite packet metadata and hijack control flow.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-6xgx-v7gw-qjph">NetX Duo advisory</a></li></ul></li>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102730">CVE-2026-102730</a> (LevelX), Eclipse, 2026<ul><li>A crafted NAND flash image can trigger an unbounded heap out-of-bounds write that overwrites a driver function pointer and hijacks control flow.</li><li>Advisory: <a href="https://github.com/advisories/GHSA-g54v-9g2q-gvrg">GitHub advisory record</a></li></ul></li>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-91189">CVE-2026-91189</a> (GUIX), Eclipse, 2026<ul><li>An unvalidated glyph range can cause an integer underflow and a heap out-of-bounds write.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/guix/security/advisories/GHSA-hgcj-22cg-4hfv">GUIX advisory</a></li></ul></li>
-          <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-92446">CVE-2026-92446</a> (GUIX), Eclipse, 2026<ul><li>The binary resource loader can read past the end of an untrusted resource because the loader is not given its length.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/guix/security/advisories/GHSA-m779-jvp3-pmqr">GUIX advisory</a></li></ul></li>
-        </ul>
-      </div>
-      <div class="cv-award-group">
-        <h3>Other Awards</h3>
-        <ul>
-          <li>1st Place (Grand Prize), <a href="https://ueco.or.kr/schedule/full/1016">3rd Ulsan Hacking Contest</a> CTF Division, Nov 7, 2026 (한국인터넷진흥원장상)</li>
-          <li>3rd Place, 2nd Yeongnam Cyber Attack and Defense Competition Finals, 머라카노사우루스, Nov 4, 2026 (한국남부발전 사장상)</li>
-          <li>MSRC Special Mention, Microsoft Security Response Center, 2026</li>
-          <li>3rd Place, K.knock · D-Alpha · CAUtion Joint Club CTF, 김민규그는감히전설이라고할수있다, July 26, 2026</li>
-          <li>Top Excellence Award, SECTOR 2026, 늙크크, July 14, 2026</li>
-          <li>3rd Place, Midnight Sun CTF 2026 Finals, EQST, June 4-5, 2026</li>
-          <li>Sincere Hacker, 29th Hacking Camp, Aug 2024</li>
-          <li>3rd Place, Spear Phishing Response Training, Ulsan Information Security Support Center, Dec 2023</li>
-        </ul>
-      </div>
-    </section>
+      <div class="cv-layout">
+        <aside class="cv-sidebar">
+          <nav class="section-nav" aria-label="CV sections">
+            <p class="index-label">ON THIS PAGE</p>
+            <a href="#overview"><span>01</span>Overview</a><a href="#experience"><span>02</span>Experience</a><a href="#awards"><span>03</span>Research & awards</a><a href="#ctf"><span>04</span>CTF achievements</a><a href="#projects"><span>05</span>Projects</a><a href="#talks"><span>06</span>Presentations</a><a href="#education"><span>07</span>Education</a><a href="#certifications"><span>08</span>Certifications</a><a href="#training"><span>09</span>Training</a><a href="#skills"><span>10</span>Skills</a>
+          </nav>
+          <p class="sidebar-note">Curiosity, research,<br>and a little persistence.</p>
+        </aside>
+        <article class="cv-content" aria-label="Curriculum vitae">
+          <section class="cv-section" id="overview"><div class="section-heading"><span aria-hidden="true" class="section-number">01</span><h2>Summary</h2></div>
 
-    <section><h2>CTF Achievements</h2><p class="cv-meta">2026</p><ul><li>1st Place (Grand Prize), <a href="https://ueco.or.kr/schedule/full/1016">3rd Ulsan Hacking Contest</a> CTF Division, Nov 7, 2026 (한국인터넷진흥원장상)</li><li>3rd Place, 2nd Yeongnam Cyber Attack and Defense Competition Finals, 머라카노사우루스, Nov 4, 2026 (한국남부발전 사장상)</li><li>20th Place, ACDC 2026 Student Division Qualifier, 성진아결혼축하해, Oct 31, 2026, advanced to finals</li><li>5th Place, <a href="https://ctf2026.hitcon.org/">HITCON CTF 2026</a>, EQST, Oct 23-25, 2026</li><li>1st Place, 2nd Yeongnam Cyber Attack and Defense Competition Qualifier, 머라카노사우루스, Oct 14, 2026, advanced to finals</li><li>9th Place, DefCamp CTF 2026 Qualifier, 一血, Sep 18-20, 2026</li><li>8th Place, BlackHat MEA CTF 2026 Qualifier, ssalmeok, Aug 29-30, 2026</li><li>9th Place, DEF CON 34 CTF Finals, The Seoul Sauna Shogunate (SSS), Aug 7-9, 2026</li><li>2nd Place, D^3CTF 2026, EQST, July 25-26, 2026</li><li>4th Place, Junior.Crypt.2026 CTF, adawn, July 11-12, 2026</li><li>2nd Place, R3CTF 2026, EQST, July 4-6, 2026</li><li>3rd Place, Midnight Sun CTF 2026 Finals, EQST, June 4-5, 2026</li><li>7th Place, DEF CON CTF 2026 Qualifier, The Seoul Sauna Shogunate, May 22-24, 2026, advanced to finals</li><li>3rd Place, Midnight Sun CTF 2026 Qualifier, KR_EQST, May 10-11, 2026, advanced to finals</li><li>9th Place, HACKTHEON SEJONG 2026 Qualifier, Advanced Division, MeowMeow, Apr 25, 2026, advanced to finals</li><li>3rd Place, UMD CTF Open Division, EQST, Apr 24-26, 2026</li><li>4th Place, b01lers CTF, EQST, Apr 18-20, 2026</li><li>4th Place, Incognito CTF, EQST, Apr 14-15, 2026</li><li>8th Place, TAMU CTF, EQST, Mar 20-22, 2026</li><li>1st Place, Midnight CTF Quals Professional Division, EQST &amp; Rubiya Team, Mar 13-15, 2026</li></ul></section>
+<p>Security researcher with hands-on experience in V8 vulnerability analysis, 1-day exploit reproduction, JavaScript engine internals, and security project leadership. Researches AI harnesses for vulnerability analysis and applies them to bug bounty work. Experienced in debugging browser vulnerabilities from root cause to exploit primitives, documenting research through technical writeups, and leading student security teams and research projects.</p>
+</section>
 
-    <section><h2>Certifications</h2><ul><li>Craftsman Information Processing, Dec 2023</li><li>Network Manager Level 2, Oct 2023</li><li>Industrial Security Management Specialist, Dec 2023</li><li>Linux Master Level 2, Dec 2023</li></ul></section>
+<section class="cv-section" id="experience"><div class="section-heading"><span aria-hidden="true" class="section-number">02</span><h2>Experience and Activities</h2></div>
 
-    <section><h2>Training</h2><ul><li>Best of the Best 14th, Jun 2025</li><li>White Hat School 2nd, Sep 2024</li><li>32nd Hacking Camp, POC Security, Feb 2026</li><li>30th Hacking Camp, POC Security, Feb 2025</li><li>29th Hacking Camp, POC Security, Aug 2024</li><li>KISA Bug Hunting Practical Training, Startup Collaboration Course, Aug 2024</li><li>KISA Incident Response Training: YARA-based Regular Expression Usage, Feb 2024</li><li>KISA Incident Response Training: Reverse Code Engineering, Feb 2024</li><li>KISA Incident Response Training: Spear Phishing Response Basic, Dec 2023</li><li>KISA Incident Response Training: Spear Phishing Response Advanced 1, HWP, Dec 2023</li><li>KISA Incident Response Training: Spear Phishing Response Advanced 2, MS Office, Dec 2023</li><li>KISA Information Security Product Practical Training, Basic 2, Nov 2023</li><li>KISA Incident Response Training: Malware Identification, Nov 2024</li><li>KISA Incident Response Training: Shellcode Analysis, Nov 2024</li></ul></section>
+<div class="cv-entry"><h3>White Hat School 4th (WHS), Windows Kernel ring0 Team</h3><p class="cv-meta">Project Leader (PL), Ongoing</p></div>
+<div class="cv-entry"><h3>SK Shieldus EQST LAB, V8 Team</h3><p class="cv-meta">Security Researcher, Jan 2026 - Present</p></div>
+<div class="cv-entry"><h3>ION Study Project</h3><p class="cv-meta">Member, May 2026 - Sep 2026</p></div>
+<div class="cv-entry"><h3>Best of the Best 14th, Vulnerability Analysis Track</h3><p class="cv-meta">Trainee / Project Manager, Jul 2025 - Dec 2025</p></div>
+<div class="cv-entry"><h3>BoB 14th, Scratch Scratch Bugbug Team</h3><p class="cv-meta">Project Manager, Sep 2025 - Dec 2025</p></div>
+<div class="cv-entry"><h3>RubiyaLab CTF Team</h3><p class="cv-meta">Member, Jul 2025 - Present</p></div>
+<div class="cv-entry"><h3>Vulnerability Research Club</h3><p class="cv-meta">Member, Apr 2025 - Jul 2025</p></div>
+<div class="cv-entry"><h3>Dongseo University CNSL</h3><p class="cv-meta">President, Jan 2025 - Jan 2026</p></div>
+<div class="cv-entry"><h3>SegFau1t / whs{segfault}</h3><p class="cv-meta">Project Manager, May 2024 - Jun 2025</p></div>
+<div class="cv-entry"><h3>White Hat School 2nd</h3><p class="cv-meta">Trainee, Mar 2024 - Sep 2024</p></div>
+</section>
 
-    <section><h2>Skills</h2><ul class="cv-skills"><li>Vulnerability Analysis</li><li>Browser Exploitation</li><li>V8 Internals</li><li>JavaScript Engine Fuzzing</li><li>AI Harness Development</li><li>Root Cause Analysis</li><li>Exploit Primitives</li><li>Debugging</li><li>Reverse Engineering</li></ul></section>
-  </article>
-</div>
+<section class="cv-section" id="awards"><div class="section-heading"><span aria-hidden="true" class="section-number">03</span><h2>Awards</h2></div>
+<details class="cv-award-group" open=""><summary><h3>Windows</h3><span aria-hidden="true" class="disclosure-icon">+</span></summary>
+
+<ul>
+<li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96074">CVE-2026-96074</a> (Windows AppX Package Manager), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>A heap-based buffer overflow can allow local elevation of privilege.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96074">Microsoft Security Update Guide</a></li></ul></li>
+<li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-105580">CVE-2026-105580</a> (Windows Management Instrumentation), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>A heap-based buffer overflow can allow local code execution.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-105580">Microsoft Security Update Guide</a></li></ul></li>
+<li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-119887">CVE-2026-119887</a> (Windows Installer), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>Use of an uninitialized resource can disclose information over a network.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-119887">Microsoft Security Update Guide</a></li></ul></li>
+<li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96067">CVE-2026-96067</a> (Microsoft Color Management), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>An integer overflow can allow code execution when an application processes a crafted color profile.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96067">Microsoft Security Update Guide</a></li></ul></li>
+<li><a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96086">CVE-2026-96086</a> (Windows WLAN Service), Microsoft Security Response Center (MSRC), November 10, 2026<ul><li>An out-of-bounds read can allow denial of service over an adjacent network.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-96086">Microsoft Security Update Guide</a></li></ul></li>
+<li><a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70068">CVE-2026-70068</a> (Windows Client-Side Caching Service), Microsoft Security Response Center (MSRC), October 13, 2026<ul><li>A heap-based buffer overflow in the CSC service can allow elevation of privilege over a network.</li><li>Advisory: <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70068">Microsoft Security Update Guide</a></li></ul></li>
+<li>CVE-2026-73006, Microsoft Security Response Center (MSRC), September 8, 2026<ul><li>Status: Duplicate.</li></ul></li>
+</ul>
+</details>
+<details class="cv-award-group"><summary><h3>V8</h3><span aria-hidden="true" class="disclosure-icon">+</span></summary>
+
+<ul>
+<li>V8 M148 n-day vulnerability exploit submission, Google VRP, May 2026<ul><li>Reproduced and successfully exploited a V8 M148 n-day vulnerability.</li><li>Issue: <a href="https://issuetracker.google.com/issues/511834078">issuetracker.google.com/issues/511834078</a></li></ul></li>
+<li>V8 M147 n-day vulnerability exploit submission, Google VRP, April 2026<ul><li>Reproduced and successfully exploited a V8 M147 n-day vulnerability.</li><li>Issue: <a href="https://issuetracker.google.com/issues/504713529">issuetracker.google.com/issues/504713529</a></li></ul></li>
+</ul>
+</details>
+<details class="cv-award-group"><summary><h3>WebKit</h3><span aria-hidden="true" class="disclosure-icon">+</span></summary>
+
+<ul>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-113904">CVE-2026-113904</a> (WebKit), Apple Security, October 26, 2026<ul><li>Credited by Apple with other researchers for a WebKit use-after-free issue that may cause a process crash when processing crafted web content.</li><li>Advisory: <a href="https://support.apple.com/en-us/149230">Apple iOS and iPadOS 27.2 security update</a></li></ul></li>
+<li>CVE-2026-43658 (WebKit), Apple Security, May 2026<ul><li>Credited by Apple for reporting a WebKit vulnerability fixed in Safari 26.5.</li><li>Advisory: <a href="https://support.apple.com/en-us/127121">support.apple.com/en-us/127121</a></li></ul></li>
+</ul>
+</details>
+<details class="cv-award-group"><summary><h3>QNAP</h3><span aria-hidden="true" class="disclosure-icon">+</span></summary>
+
+<ul>
+<li>QNAP, 2026<ul><li>CVEs: CVE-2026-53886, CVE-2026-59754, CVE-2026-59757, CVE-2026-59758, CVE-2026-62400, CVE-2026-62402, CVE-2026-62403, CVE-2026-62404, CVE-2026-62408, CVE-2026-62411, CVE-2026-63051, CVE-2026-63053, CVE-2026-63054, CVE-2026-63057, CVE-2026-63063, CVE-2026-63068, CVE-2026-63593, CVE-2026-63597, CVE-2026-63598, CVE-2026-63605, CVE-2026-63607, CVE-2026-63612, CVE-2026-63617, CVE-2026-65849, CVE-2026-65850, CVE-2026-65856, CVE-2026-68007, CVE-2026-68008, CVE-2026-68009, CVE-2026-68015, CVE-2026-68017, CVE-2026-68025, CVE-2026-68030, CVE-2026-68032, CVE-2026-68035, CVE-2026-68037, CVE-2026-68038, CVE-2026-68039, CVE-2026-68040, CVE-2026-68043, CVE-2026-68044, CVE-2026-68046, CVE-2026-68048, CVE-2026-80384, CVE-2026-80400, CVE-2026-80420, CVE-2026-86631, CVE-2026-86640, CVE-2026-92309 (QuTS hero).</li><li>Status: Assigned.</li></ul></li>
+</ul>
+</details>
+<details class="cv-award-group"><summary><h3>Eclipse</h3><span aria-hidden="true" class="disclosure-icon">+</span></summary>
+
+<ul>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-91041">CVE-2026-91041</a> (FileX), Eclipse, 2026<ul><li>Fault-tolerant log replay can write past the destination sector when mounting a crafted FAT image.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/filex/security/advisories/GHSA-c8cj-fj9j-426v">FileX advisory</a></li></ul></li>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-96582">CVE-2026-96582</a> (USBX), Eclipse, 2026<ul><li>A truncated HID report descriptor can trigger a heap out-of-bounds read during USB device enumeration.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/usbx/security/advisories/GHSA-f2fv-fqrc-h8jr">USBX advisory</a></li></ul></li>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102711">CVE-2026-102711</a> (ThreadX), Eclipse, 2026<ul><li>The loadable-module loader trusts attacker-controlled image lengths and offsets, enabling a heap out-of-bounds read and leaving module entry points insufficiently validated.</li><li>Advisory: <a href="https://github.com/advisories/GHSA-w4rq-vh43-v5q5">GitHub advisory record</a></li></ul></li>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102718">CVE-2026-102718</a> (NetX Duo), Eclipse, 2026<ul><li>A crafted SNMP OID using BER multibyte length encoding can cause a remote out-of-bounds read and corrupt agent state.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-7qmm-29vg-7hf8">NetX Duo advisory</a></li></ul></li>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102712">CVE-2026-102712</a> (NetX Duo), Eclipse, 2026<ul><li>A crafted DTLS ClientHello can drive an out-of-bounds read that exposes adjacent process memory in the ServerHello response.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-5xr3-wpxf-rw5q">NetX Duo advisory</a></li></ul></li>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102761">CVE-2026-102761</a> (NetX Duo), Eclipse, 2026<ul><li>A masked WebSocket frame split across a packet chain can overwrite packet metadata and hijack control flow.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-6xgx-v7gw-qjph">NetX Duo advisory</a></li></ul></li>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-102730">CVE-2026-102730</a> (LevelX), Eclipse, 2026<ul><li>A crafted NAND flash image can trigger an unbounded heap out-of-bounds write that overwrites a driver function pointer and hijacks control flow.</li><li>Advisory: <a href="https://github.com/advisories/GHSA-g54v-9g2q-gvrg">GitHub advisory record</a></li></ul></li>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-91189">CVE-2026-91189</a> (GUIX), Eclipse, 2026<ul><li>An unvalidated glyph range can cause an integer underflow and a heap out-of-bounds write.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/guix/security/advisories/GHSA-hgcj-22cg-4hfv">GUIX advisory</a></li></ul></li>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2026-92446">CVE-2026-92446</a> (GUIX), Eclipse, 2026<ul><li>The binary resource loader can read past the end of an untrusted resource because the loader is not given its length.</li><li>Advisory: <a href="https://github.com/eclipse-threadx/guix/security/advisories/GHSA-m779-jvp3-pmqr">GUIX advisory</a></li></ul></li>
+</ul>
+</details>
+<details class="cv-award-group"><summary><h3>Other Awards</h3><span aria-hidden="true" class="disclosure-icon">+</span></summary>
+
+<ul>
+<li>1st Place (Grand Prize), <a href="https://ueco.or.kr/schedule/full/1016">3rd Ulsan Hacking Contest</a> CTF Division, Nov 7, 2026 (한국인터넷진흥원장상)</li>
+<li>3rd Place, 2nd Yeongnam Cyber Attack and Defense Competition Finals, 머라카노사우루스, Nov 4, 2026 (한국남부발전 사장상)</li>
+<li>MSRC Special Mention, Microsoft Security Response Center, 2026</li>
+<li>3rd Place, K.knock · D-Alpha · CAUtion Joint Club CTF, 김민규그는감히전설이라고할수있다, July 26, 2026</li>
+<li>Top Excellence Award, SECTOR 2026, 늙크크, July 14, 2026</li>
+<li>3rd Place, Midnight Sun CTF 2026 Finals, EQST, June 4-5, 2026</li>
+<li>Sincere Hacker, 29th Hacking Camp, Aug 2024</li>
+<li>3rd Place, Spear Phishing Response Training, Ulsan Information Security Support Center, Dec 2023</li>
+</ul>
+</details>
+</section>
+
+<section class="cv-section" id="ctf"><div class="section-heading"><span aria-hidden="true" class="section-number">04</span><h2>CTF Achievements</h2></div><p class="cv-meta">2026</p><ul><li class="ctf-result podium"><span class="ctf-rank">1st Place (Grand Prize)</span><span class="sr-only">, </span><span class="ctf-event"><a href="https://ueco.or.kr/schedule/full/1016">3rd Ulsan Hacking Contest</a> CTF Division</span><span class="ctf-date"><span class="sr-only">, </span>Nov 7, 2026 (한국인터넷진흥원장상)</span></li><li class="ctf-result podium"><span class="ctf-rank">3rd Place</span><span class="sr-only">, </span><span class="ctf-event">2nd Yeongnam Cyber Attack and Defense Competition Finals, 머라카노사우루스</span><span class="ctf-date"><span class="sr-only">, </span>Nov 4, 2026 (한국남부발전 사장상)</span></li><li class="ctf-result"><span class="ctf-rank">20th Place</span><span class="sr-only">, </span><span class="ctf-event">ACDC 2026 Student Division Qualifier, 성진아결혼축하해</span><span class="ctf-date"><span class="sr-only">, </span>Oct 31, 2026, advanced to finals</span></li><li class="ctf-result"><span class="ctf-rank">5th Place</span><span class="sr-only">, </span><span class="ctf-event"><a href="https://ctf2026.hitcon.org/">HITCON CTF 2026</a>, EQST</span><span class="ctf-date"><span class="sr-only">, </span>Oct 23-25, 2026</span></li><li class="ctf-result podium"><span class="ctf-rank">1st Place</span><span class="sr-only">, </span><span class="ctf-event">2nd Yeongnam Cyber Attack and Defense Competition Qualifier, 머라카노사우루스</span><span class="ctf-date"><span class="sr-only">, </span>Oct 14, 2026, advanced to finals</span></li><li class="ctf-result"><span class="ctf-rank">9th Place</span><span class="sr-only">, </span><span class="ctf-event">DefCamp CTF 2026 Qualifier, 一血</span><span class="ctf-date"><span class="sr-only">, </span>Sep 18-20, 2026</span></li><li class="ctf-result"><span class="ctf-rank">8th Place</span><span class="sr-only">, </span><span class="ctf-event">BlackHat MEA CTF 2026 Qualifier, ssalmeok</span><span class="ctf-date"><span class="sr-only">, </span>Aug 29-30, 2026</span></li><li class="ctf-result"><span class="ctf-rank">9th Place</span><span class="sr-only">, </span><span class="ctf-event">DEF CON 34 CTF Finals, The Seoul Sauna Shogunate (SSS)</span><span class="ctf-date"><span class="sr-only">, </span>Aug 7-9, 2026</span></li><li class="ctf-result podium"><span class="ctf-rank">2nd Place</span><span class="sr-only">, </span><span class="ctf-event">D^3CTF 2026, EQST</span><span class="ctf-date"><span class="sr-only">, </span>July 25-26, 2026</span></li><li class="ctf-result"><span class="ctf-rank">4th Place</span><span class="sr-only">, </span><span class="ctf-event">Junior.Crypt.2026 CTF, adawn</span><span class="ctf-date"><span class="sr-only">, </span>July 11-12, 2026</span></li><li class="ctf-result podium"><span class="ctf-rank">2nd Place</span><span class="sr-only">, </span><span class="ctf-event">R3CTF 2026, EQST</span><span class="ctf-date"><span class="sr-only">, </span>July 4-6, 2026</span></li><li class="ctf-result podium"><span class="ctf-rank">3rd Place</span><span class="sr-only">, </span><span class="ctf-event">Midnight Sun CTF 2026 Finals, EQST</span><span class="ctf-date"><span class="sr-only">, </span>June 4-5, 2026</span></li><li class="ctf-result"><span class="ctf-rank">7th Place</span><span class="sr-only">, </span><span class="ctf-event">DEF CON CTF 2026 Qualifier, The Seoul Sauna Shogunate</span><span class="ctf-date"><span class="sr-only">, </span>May 22-24, 2026, advanced to finals</span></li><li class="ctf-result podium"><span class="ctf-rank">3rd Place</span><span class="sr-only">, </span><span class="ctf-event">Midnight Sun CTF 2026 Qualifier, KR_EQST</span><span class="ctf-date"><span class="sr-only">, </span>May 10-11, 2026, advanced to finals</span></li><li class="ctf-result"><span class="ctf-rank">9th Place</span><span class="sr-only">, </span><span class="ctf-event">HACKTHEON SEJONG 2026 Qualifier, Advanced Division, MeowMeow</span><span class="ctf-date"><span class="sr-only">, </span>Apr 25, 2026, advanced to finals</span></li><li class="ctf-result podium"><span class="ctf-rank">3rd Place</span><span class="sr-only">, </span><span class="ctf-event">UMD CTF Open Division, EQST</span><span class="ctf-date"><span class="sr-only">, </span>Apr 24-26, 2026</span></li><li class="ctf-result"><span class="ctf-rank">4th Place</span><span class="sr-only">, </span><span class="ctf-event">b01lers CTF, EQST</span><span class="ctf-date"><span class="sr-only">, </span>Apr 18-20, 2026</span></li><li class="ctf-result"><span class="ctf-rank">4th Place</span><span class="sr-only">, </span><span class="ctf-event">Incognito CTF, EQST</span><span class="ctf-date"><span class="sr-only">, </span>Apr 14-15, 2026</span></li><li class="ctf-result"><span class="ctf-rank">8th Place</span><span class="sr-only">, </span><span class="ctf-event">TAMU CTF, EQST</span><span class="ctf-date"><span class="sr-only">, </span>Mar 20-22, 2026</span></li><li class="ctf-result podium"><span class="ctf-rank">1st Place</span><span class="sr-only">, </span><span class="ctf-event">Midnight CTF Quals Professional Division, EQST &amp; Rubiya Team</span><span class="ctf-date"><span class="sr-only">, </span>Mar 13-15, 2026</span></li></ul></section>
+
+<section class="cv-section" id="projects"><div class="section-heading"><span aria-hidden="true" class="section-number">05</span><h2>Selected Projects</h2></div>
+
+
+
+
+
+
+
+
+<div class="project-grid"><div class="cv-entry"><h3>NAS Vulnerability Research</h3><p class="cv-meta">breadhackers, completed Sep 2026</p></div><div class="cv-entry"><h3>CVE-2024-0517 1-day Analysis</h3><p class="cv-meta">Project Manager, May 2024 - Sep 2024</p><ul><li>Led a team project analyzing CVE-2024-0517 in V8 from environment setup to exploitation.</li><li>Studied Maglev, allocation folding, garbage collection, OOB access, WebAssembly RWX memory, fake object, address-of, AAR, and AAW primitives.</li><li>Debugged the vulnerability locally and adapted public PoC logic to match the target memory layout.</li><li>Presented the work at the 29th Hacking Camp.</li></ul></div><div class="cv-entry"><h3>CVE-2020-6418 1-day Analysis</h3><p class="cv-meta">Dec 2024 - Jan 2025</p><ul><li>Analyzed a V8 TurboFan vulnerability involving runtime map changes through JavaScript Proxy behavior.</li><li>Implemented exploit primitives including address-of, fake object, arbitrary read/write, and WebAssembly RWX memory control.</li><li>Achieved shell execution and documented the analysis as a multi-part technical blog series.</li><li>Presented the topic at the 2025 CCA offline seminar.</li></ul></div><div class="cv-entry"><h3>Internal CTF Platform and Event Operation</h3><p class="cv-meta">Project Lead, Jan 2025 - Mar 2025</p><ul><li>Led the development and operation of an internal CTF event for a university security club.</li><li>Coordinated platform development, challenge design, event operations, logs, tickets, and participant feedback.</li></ul></div><div class="cv-entry"><h3>IP Camera Security Threat Analysis and Guidelines</h3><ul><li>Analyzed common IP camera risks including default credentials, weak settings, outdated firmware, and unsafe network exposure.</li><li>Built a controlled ESP32-based test environment and proposed practical user security guidelines.</li></ul></div><div class="cv-entry"><h3>JavaScript Engine Fuzzing Research</h3><ul><li>Studied Fuzzilli-based JavaScript engine fuzzing for V8, JavaScriptCore, and SpiderMonkey.</li><li>Investigated coverage limitations, crash analysis, and visualization-driven fuzzing improvements.</li></ul></div><div class="cv-entry"><h3>State-Guided Fuzzing with Fuzzilli</h3><p class="cv-meta">Project Manager, BoB 14th</p><ul><li>Led a research project applying state-guided fuzzing concepts to V8.</li><li>Focused on internal state transitions such as element transitions and inline cache transitions as vulnerability discovery targets.</li></ul></div></div></section>
+
+<section class="cv-section" id="talks"><div class="section-heading"><span aria-hidden="true" class="section-number">06</span><h2>Presentations</h2></div><ul class="cv-simple-list"><li><a href="https://hackingcamp.org/files/slides/33/2d46aae983a7f2ed79c5d1a3ee1b976c.pdf">33rd Hacking Camp: How Do You Live? (with V8)</a></li><li>2025 CCA Offline Seminar: CVE-2020-6418 and V8 vulnerability exploitation.</li><li>29th Hacking Camp: CVE-2024-0517 analysis and beginner-oriented V8 vulnerability research.</li></ul></section>
+
+<section class="cv-section" id="education"><div class="section-heading"><span aria-hidden="true" class="section-number">07</span><h2>Education</h2></div>
+
+<div class="cv-entry"><h3>Dongseo University</h3><p>B.S. in Information Security, expected Mar 2027</p><p class="cv-meta">Mar 2020 - Mar 2027</p></div>
+</section>
+
+<section class="cv-section" id="certifications"><div class="section-heading"><span aria-hidden="true" class="section-number">08</span><h2>Certifications</h2></div><ul class="cv-simple-list"><li>Craftsman Information Processing, Dec 2023</li><li>Network Manager Level 2, Oct 2023</li><li>Industrial Security Management Specialist, Dec 2023</li><li>Linux Master Level 2, Dec 2023</li></ul></section>
+
+<section class="cv-section" id="training"><div class="section-heading"><span aria-hidden="true" class="section-number">09</span><h2>Training</h2></div><ul class="cv-simple-list"><li>Best of the Best 14th, Jun 2025</li><li>White Hat School 2nd, Sep 2024</li><li>32nd Hacking Camp, POC Security, Feb 2026</li><li>30th Hacking Camp, POC Security, Feb 2025</li><li>29th Hacking Camp, POC Security, Aug 2024</li><li>KISA Bug Hunting Practical Training, Startup Collaboration Course, Aug 2024</li><li>KISA Incident Response Training: YARA-based Regular Expression Usage, Feb 2024</li><li>KISA Incident Response Training: Reverse Code Engineering, Feb 2024</li><li>KISA Incident Response Training: Spear Phishing Response Basic, Dec 2023</li><li>KISA Incident Response Training: Spear Phishing Response Advanced 1, HWP, Dec 2023</li><li>KISA Incident Response Training: Spear Phishing Response Advanced 2, MS Office, Dec 2023</li><li>KISA Information Security Product Practical Training, Basic 2, Nov 2023</li><li>KISA Incident Response Training: Malware Identification, Nov 2024</li><li>KISA Incident Response Training: Shellcode Analysis, Nov 2024</li></ul></section>
+
+<section class="cv-section" id="skills"><div class="section-heading"><span aria-hidden="true" class="section-number">10</span><h2>Skills</h2></div><ul class="cv-skills"><li>Vulnerability Analysis</li><li>Browser Exploitation</li><li>V8 Internals</li><li>JavaScript Engine Fuzzing</li><li>AI Harness Development</li><li>Root Cause Analysis</li><li>Exploit Primitives</li><li>Debugging</li><li>Reverse Engineering</li></ul></section>
+        </article>
+      </div>
+    </main>
+    <footer class="cv-footer">
+      <div><p class="eyebrow">LET’S CONNECT</p><a class="footer-email" href="mailto:adawn0106@gmail.com">Continue the conversation. <span aria-hidden="true">↗</span></a></div>
+      <div class="footer-meta"><span>Do Young Park · adawn</span><a href="#top">Back to top ↑</a></div>
+    </footer>
+  </div>
+  <script>
+  (() => {
+    document.documentElement.classList.add('js');
+    document.getElementById('print-cv').addEventListener('click', () => window.print());
+    const disclosures = [...document.querySelectorAll('details')];
+    let openStates;
+    window.addEventListener('beforeprint', () => {
+      if (!openStates) openStates = disclosures.map(item => item.open);
+      disclosures.forEach(item => { item.open = true; });
+    });
+    window.addEventListener('afterprint', () => {
+      if (openStates) {
+        disclosures.forEach((item, i) => { item.open = openStates[i]; });
+        openStates = undefined;
+      }
+    });
+    const links = [...document.querySelectorAll('.section-nav a')];
+    if (!('IntersectionObserver' in window)) return;
+    const sections = [...document.querySelectorAll('.cv-section')];
+    const updateActive = () => {
+      let active = sections[0];
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= window.innerHeight * .35) active = section;
+      }
+      links.forEach(link => {
+        if (link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    const observer = new IntersectionObserver(updateActive, {rootMargin: '-10% 0px -55% 0px'});
+    sections.forEach(section => observer.observe(section));
+    window.addEventListener('scroll', updateActive, {passive: true});
+    updateActive();
+  })();
+  </script>
+  {% include analytics.html %}
+</body>
+</html>
